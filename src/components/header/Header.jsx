@@ -19,7 +19,7 @@ const Header = () => {
 
             {/* BEGIN menu  */}
             <div className="menu">
-                <form className="menu-search" />
+                <form className="menu-search invisible" />
                 {/* BEGIN profile */}
                 <div className="menu-item dropdown">
                     <a href="#" data-bs-toggle="dropdown" data-bs-display="static" className="menu-link">
