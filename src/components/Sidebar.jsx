@@ -1,7 +1,6 @@
 import React from "react";
 
 const Sidebar = () => {
-    console.log("Sidebar.jsx");
     return (
         <div id="sidebar" className="app-sidebar">
             {/* {console.log("Sidebar.jsx")} */}

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Header = () => {
-    console.log("Header.jsx");
+
     return (
         <div id="header" className="app-header">
             {/* <!-- BEGIN mobile-toggler --> */}

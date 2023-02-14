@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Theme = () => {
-    console.log("Theme.jsx")
     return (
         <div className="theme-panel">
             <a data-click="theme-panel-expand" className="theme-collapse-btn"><i className="fa fa-cog"></i></a>

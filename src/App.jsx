@@ -4,8 +4,7 @@ import Main from './components/Main'
 import Sidebar from './components/Sidebar'
 import Theme from './components/Theme'
 
-function App() {
-  console.log("App.jsx");
+const App = () => {
 
   return (
     < div id="app" className="app" >

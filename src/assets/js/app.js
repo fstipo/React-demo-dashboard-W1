@@ -894,9 +894,8 @@ var App = function () {
 	};
 }();
 
-console.log("App.js is loaded")
+
 addEventListener("load", (e) => {
-	console.log("page is fully loaded", e.target);
 	App.init()
 });
 
