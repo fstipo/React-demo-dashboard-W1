@@ -1,4 +1,5 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 const Main = () => {
 
@@ -6,7 +7,6 @@ const Main = () => {
         <>
             <div id="content" className="app-content">
                 <ul className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="#">a</a></li>
                     <li className="breadcrumb-item active">HOME PAGE</li>
                 </ul>
 
@@ -22,6 +22,7 @@ const Main = () => {
             {/* <!-- BEGIN btn-scroll-top --> */}
             <a href="#" data-click="scroll-top" className="btn-scroll-top fade"><i className="fa fa-arrow-up"></i></a>
             {/* <Child /> */}
+            <Outlet />
         </>
     )
 }

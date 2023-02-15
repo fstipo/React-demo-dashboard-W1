@@ -9,11 +9,10 @@ const Sidebar = () => {
                 {/* <!-- BEGIN menu --> */}
                 <div className="menu">
                     <div className="menu-header">Navigation</div>
-                    {/* TODO active class -> react router */}
-                    {/* TODO react router with 3 pages*/}
-                    <SidebarLink linkLabel="Home" linkIcon="home" />
-                    <SidebarLink linkLabel="People" linkIcon="users" />
-                    <SidebarLink linkLabel="Assets" linkIcon="cog" />
+                    {/* TODO active class -> theme color */}
+                    <SidebarLink linkLabel="Home" linkIcon="home" to="/" />
+                    <SidebarLink linkLabel="People" linkIcon="users" to="people" />
+                    <SidebarLink linkLabel="Assets" linkIcon="cog" to="assets" />
                 </div>
                 {/* <!-- END menu --> */}
             </div>
@@ -28,3 +27,4 @@ const Sidebar = () => {
 
 
 export default Sidebar;
+

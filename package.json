@@ -74,6 +74,7 @@
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-router-dom": "^6.8.1",
     "select-picker": "^0.3.2",
     "spectrum-colorpicker2": "^2.0.9",
     "summernote": "^0.8.20",
