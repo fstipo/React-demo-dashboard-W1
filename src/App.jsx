@@ -2,14 +2,13 @@ import React from 'react'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"
 
 // layouts
-import RootLayout from './components/layouts/RootLayout'
+import RootLayout from './layouts/RootLayout'
 
 // pages
 import Home from "./pages/Home"
 import People from "./pages/People"
 import Assets from "./pages/Assets"
-
-
+import NoPage from './pages/NoPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,6 +16,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='people' element={<People />} />
       <Route path='assets' element={<Assets />} />
+      <Route path='*' element={<NoPage />} />
     </Route>
 
   )
@@ -24,8 +24,8 @@ const router = createBrowserRouter(
 
 const App = () => {
 
+  // TODO app - sidebar - minified add  invisible on navigation
   return (
-    // // TODO app - sidebar - minified add  invisible on navigation
     <RouterProvider router={router} />
   )
 }

@@ -2,10 +2,10 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 // pages
-import Header from '../component/header/Header'
-import Sidebar from '../component/sidebar/Sidebar'
-import Main from '../component/Main'
-import Theme from '../component/Theme'
+import Header from "./components/header/Header"
+import Sidebar from "./components/sidebar/Sidebar"
+import Main from './components/Main'
+import Theme from './components/Theme'
 
 const RootLayout = () => {
     return (
