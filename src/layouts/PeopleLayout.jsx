@@ -1,11 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
-const People = () => {
+const PeopleLayout = () => {
     return (
-
         <div id="content" className="app-content">
-            <div className="d-flex align-items-center mb-3">
+            <div className="d-flex align-items-center mb-1">
                 <div>
                     <ul className="breadcrumb">
                         <li className="breadcrumb-item"><Link to="/">Home</Link></li>
@@ -15,7 +14,7 @@ const People = () => {
                 </div>
                 <div className="ms-auto">
                     <a href="#" className="btn btn-primary"
-                    ><i className="fa fa-user-plus fa-fw me-1"></i> Add User</a>
+                    ><i className="fa fa-user-plus fa-fw me-1"></i>Create User</a>
                 </div>
             </div>
             < div className="card" >
@@ -29,17 +28,19 @@ const People = () => {
                         >In Moment</a>
                     </li>
                 </ul >
-            </div>
 
-            <div className="tab-content p-4" >
-                <div className="tab-pane fade show active" id="allTab">
-                </div>
-            </div >
+                <div className="tab-content p-2" >
+                    <div className="tab-pane fade show active" id="allTab">
+                    </div>
+                </div >
+                <Outlet />
+            </div>
         </div >
+
     )
 }
 
-export default People
+export default PeopleLayout
 
 
 

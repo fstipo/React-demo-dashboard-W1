@@ -14,7 +14,7 @@ const Assets = () => {
                 </div>
                 <div className="ms-auto">
                     <a href="#" className="btn btn-primary"
-                    ><i className="fa fa-plus-circle fa-fw me-1"></i> Add Asset</a>
+                    ><i className="fa fa-plus-circle fa-fw me-1"></i>Create Asset</a>
                 </div>
             </div>
             < div className="card" >
