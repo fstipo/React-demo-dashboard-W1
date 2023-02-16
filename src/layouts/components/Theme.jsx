@@ -22,12 +22,7 @@ const Theme = () => {
                 <hr className="mb-0" />
                 <div className="row mt-10px pt-3px">
                     <div className="col-9 control-label text-dark fw-bold">
-                        <div>Dark Mode {/*<span className="badge bg-primary ms-1 position-relative py-4px px-6px" style={{ "top": "-1px" }}>NEW</span>*/}</div>
-                        {/* <div className="lh-14 fs-13px">
-                            <small className="text-dark opacity-50">
-                                Adjust the appearance to reduce glare and give your eyes a break.
-                            </small>
-                        </div> */}
+                        <div>Dark Mode </div>
                     </div>
                     <div className="col-3 d-flex">
                         <div className="form-check form-switch ms-auto mb-0 mt-2px">
