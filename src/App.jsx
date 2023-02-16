@@ -8,7 +8,7 @@ import RootLayout from './layouts/RootLayout'
 import Home from "./pages/Home"
 import People from "./pages/People"
 import Assets from "./pages/Assets"
-import NoPage from './pages/NoPage'
+import PageNotFound from './pages/PageNotFound'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,7 +16,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='people' element={<People />} />
       <Route path='assets' element={<Assets />} />
-      <Route path='*' element={<NoPage />} />
+      <Route path='*' element={<PageNotFound />} />
     </Route>
 
   )

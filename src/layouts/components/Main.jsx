@@ -10,13 +10,9 @@ const Main = () => {
                     <li className="breadcrumb-item active">HOME PAGE</li>
                 </ul>
 
-                <h1 className="page-header">
+                {/* <h1 className="page-header">
                     Starter <small>page header description goes here...</small>
-                </h1>
-
-                <p>
-                    Start build your page here
-                </p>
+                </h1> */}
             </div>
             {/* <!-- END #content --> */}
             {/* <!-- BEGIN btn-scroll-top --> */}

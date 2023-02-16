@@ -1,7 +1,7 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const NoPage = () => {
+const PageNotFound = () => {
     return (
         <div className='text-center'>
             <div id="app" className="app app-full-height app-without-header">
@@ -16,8 +16,8 @@ const NoPage = () => {
 
                         <h1>Oops!</h1>
                         <h3>We can't seem to find the page you're looking for</h3>
-                        <NavLink to="/" className="btn btn-outline-default">
-                            Go to homepage</NavLink>
+                        <Link to="/" className="btn btn-outline-default">
+                            Go to homepage</Link>
                     </div>
                 </div>
             </div>
@@ -25,4 +25,4 @@ const NoPage = () => {
     )
 }
 
-export default NoPage
+export default PageNotFound
