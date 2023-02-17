@@ -8,13 +8,13 @@ const PeopleLayout = () => {
                 <div>
                     <ul className="breadcrumb">
                         <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                        <li className="breadcrumb-item active">People</li>
+                        <li className="breadcrumb-item active">Assets</li>
                     </ul>
-                    <h1 className="page-header mb-0">People</h1>
+                    <h1 className="page-header mb-0">Assets</h1>
                 </div>
                 <div className="ms-auto">
                     <a href="#" className="btn btn-primary"
-                    ><i className="fa fa-user-plus fa-fw me-1"></i>Create User</a>
+                    ><i className="fa fa-plus-circle fa-fw me-1"></i>Create Asset</a>
                 </div>
             </div>
             < div className="card" >

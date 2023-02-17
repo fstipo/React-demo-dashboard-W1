@@ -12,19 +12,19 @@ import { useQuery, useMutation } from "react-query";
 // *URL
 const url = "https://es-demo.azurewebsites.net/v1"
 const apiPeople = axios.create({ baseURL: url });
-const sourcePeople = "/People";
+// const sourcePeople = "/People";
 const sourceAssets = "/Assets"
 const history = "/history?from=1.1.1990";
 
 // *PEOPLE
 // *GET People 
-export const usePeopleData = (onError) => {
+export const useAssetsData = (onError) => {
     const getPeople = async () => {
-        const response = await apiPeople.get(sourcePeople);
+        const response = await apiPeople.get(sourceAssets);
         return response.data;
     }
-    return useQuery("people", getPeople, {
-        select: people => people.map(el => {
+    return useQuery("assets", getPeople, {
+        select: assets => assets.map(el => {
             return {
                 ...el, changedAt: Moment(el.changedAt).format("lll"),
             }

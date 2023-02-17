@@ -4,15 +4,16 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 // layouts
 import RootLayout from './layouts/RootLayout'
 import PeopleLayout from './layouts/PeopleLayout'
+import AssetsLayout from "./layouts/AssetsLayout"
 
 // pages
 import Home from "./pages/Home"
 import PeopleAll from "./pages/people/PeopleAll"
-import Assets from "./pages/Assets"
+import AssetAll from "./pages/Assets/AssetsAll"
 import PageNotFound from './pages/PageNotFound'
 
 // loader function
-import { getPeople } from './hooks/usePeople'
+import { usePeopleData } from './hooks/usePeople'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,10 +23,14 @@ const router = createBrowserRouter(
         <Route
           index
           element={<PeopleAll />}
-          loader={getPeople}
         />
       </Route>
-      <Route path='assets' element={<Assets />} />
+      <Route path='assets' element={<AssetsLayout />} >
+        <Route
+          index
+          element={<AssetAll />}
+        />
+      </Route>
       <Route path='*' element={<PageNotFound />} />
     </Route>
 

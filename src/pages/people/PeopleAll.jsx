@@ -1,28 +1,40 @@
-import React from 'react'
-import { useLoaderData } from 'react-router-dom'
-import PeopleRow from './PeopleRow';
+import TableHeader from "../../layouts/components/table/TableHeader"
+
+
+const headerLabels = ["", "ID", "Full Name", "Sector", "Changed At", "Original Revision"];
+
+import { usePeopleData } from "../../hooks/usePeople";
+import { randomKey } from "../../utils/utils";
+
 
 const PeopleAll = () => {
-    const people = useLoaderData();
+
+
+    const onError = () => <div className='display-1'>Error</div>
+    const {
+        isLoading,
+        data: people,
+        error,
+        isError,
+    } = usePeopleData(onError);
+
+
     return (
+        <div className="table-responsive">
+            <table className="table table-hover text-nowrap ">
+                <TableHeader headerLabels={headerLabels} />
+                <tbody>
+                    {people?.map(item => <tr key={randomKey()}>
+                        <td className="align-middle">{ }</td><td className="align-middle">{item.id}</td><td className="align-middle">{item.name}</td><td className="align-middle">{item.sector}</td>
+                        <td className="align-middle">{item.changedAt}</td>
+                        <td className="align-middle">{item.originalRevision
+                        }</td>
 
-
-        <table className="table table-hover text-nowrap">
-            <thead>
-                <tr>
-                    <th className="pt-0 pb-2"></th>
-                    <th className="pt-0 pb-2">id</th>
-                    <th className="pt-0 pb-2">Name</th>
-                    <th className="pt-0 pb-2">Date</th>
-                    <th className="pt-0 pb-2">Sector</th>
-                </tr>
-            </thead>
-            <tbody>
-                {people.map(user => <PeopleRow id={user.id} name={user.name} date={user.date} sector={user.sector} />)
-                }
-
-            </tbody>
-        </table>)
+                    </tr>)}
+                </tbody>
+            </table>
+        </div>
+    )
 }
 
 
