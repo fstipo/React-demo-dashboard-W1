@@ -9,22 +9,27 @@ import AssetsLayout from "./layouts/AssetsLayout"
 // pages
 import Home from "./pages/Home"
 import PeopleAll from "./pages/people/PeopleAll"
+import PeopleInMoment from "./pages/people/PeopleInMoment"
 import AssetAll from "./pages/Assets/AssetsAll"
 import PageNotFound from './pages/PageNotFound'
 
-// loader function
-import { usePeopleData } from './hooks/usePeople'
-
 const router = createBrowserRouter(
+
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />}>
       <Route index element={<Home />} />
+
       <Route path='people' element={<PeopleLayout />}>
         <Route
           index
           element={<PeopleAll />}
         />
+        <Route
+          path='in-moment'
+          element={<PeopleInMoment />}
+        />
       </Route>
+
       <Route path='assets' element={<AssetsLayout />} >
         <Route
           index
