@@ -8,8 +8,6 @@ import { randomKey } from "../../utils/utils";
 
 
 const PeopleAll = () => {
-
-
     const onError = () => <div className='display-1'>Error</div>
     const {
         isLoading,

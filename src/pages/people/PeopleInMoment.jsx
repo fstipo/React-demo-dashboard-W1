@@ -1,22 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
-
 import TableHeader from "../../layouts/components/table/TableHeader"
-
-
+import { usePeopleHistoryInMoment } from "../../hooks/usePeople";
+import { randomKey } from "../../utils/utils";
+import { dateFormat } from "../../utils/utils"
 const headerLabels = ["", "ID", "Full Name", "Sector", "Changed At", "Original Revision"];
 
 const PeopleInMoment = () => {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [date, setDate] = useState("");
-    const [newData, setNewData] = useState("");
+    const [peopleInMoment, setPeopleInMoment] = useState("");
+
+    // const [newData, setNewData] = useState("");
 
     const getDataHandler = () => {
-        setNewData(getData(id, date.toISOString(), setNewData))
+        //  setNewData(getData(id, date.toISOString(), setNewData))
+        console.log(date);
+        refetch()
+        console.log(people)
+
     };
+
+    // useEffect(() => {
+
+    //     setPeopleInMoment(people)
+    // }, [])
+
+
+
+    const onError = () => <div className='display-1'>Error</div>
+    // const onSuccess = (people) => console.log(people);
+    const {
+        isLoading,
+        data: people,
+        error,
+        isError,
+        refetch,
+
+
+    } = usePeopleHistoryInMoment(onError,);
 
     return (
         <>
@@ -31,7 +55,7 @@ const PeopleInMoment = () => {
                             setDate(date)
                         }}
                         onCalendarClose={
-                            console.log(date)
+                            getDataHandler
                         }
                         showTimeSelect
                         dateFormat="d.MM.yyyy H:mm"
@@ -42,17 +66,19 @@ const PeopleInMoment = () => {
             </div>
             <div className="table-responsive">
 
-                {showDatePicker && <table className="table table-hover text-nowrap ">
+                {peopleInMoment && <table className="table table-hover text-nowrap ">
                     <TableHeader headerLabels={headerLabels} />
-                    {/* <tbody>
-                    {people?.map(item => <tr key={randomKey()}>
-                        <td className="align-middle">{ }</td><td className="align-middle">{item.id}</td><td className="align-middle">{item.name}</td><td className="align-middle">{item.sector}</td>
-                        <td className="align-middle">{item.changedAt}</td>
-                        <td className="align-middle">{item.originalRevision
-                        }</td>
 
-                    </tr>)}
-                </tbody> */}
+
+                    <tbody>
+                        {peopleInMoment?.map(item => <tr key={randomKey()}>
+                            <td className="align-middle">{ }</td><td className="align-middle">{item.id}</td><td className="align-middle">{item.name}</td><td className="align-middle">{item.sector}</td>
+                            <td className="align-middle">{item.changedAt}</td>
+                            <td className="align-middle">{item.originalRevision
+                            }</td>
+
+                        </tr>)}
+                    </tbody>
                 </table>}
             </div>
         </>
