@@ -56,12 +56,11 @@ const Test = () => {
             <div>
                 <h1>Moment.js Test</h1>
                 <hr />
-                <h3 className='bg-success text-white'>Direct conversation to ISOString</h3>
+
                 <div className='h3'>{`React Picker: ${date}`}</div>
                 {date && <div className='h3'>{`Iso String: ${dateISO}`}</div>}
                 <hr />
-                <h3>My function</h3>
-                <code className='h4'> const dateFormat = (date) => moment(date).format('DD.MM.YYYY, h:mm:ss A');</code>
+
 
                 {date && <div className='h3'>{`My Format: ${dateFormat(dateISO)}`}</div>}
                 <hr />
@@ -78,10 +77,3 @@ const Test = () => {
 
 export default Test
 
-// echo "# dates-moment.js-D4" >> README.md
-// git init
-// git add README.md
-// git commit - m "first commit"
-// git branch - M main
-// git remote add origin https://github.com/fstipo/dates-moment.js-D4.git
-// git push - u origin main

@@ -5,42 +5,23 @@ import "react-datepicker/dist/react-datepicker.css";
 import TableHeader from "../../layouts/components/table/TableHeader"
 import { usePeopleHistoryInMoment } from "../../hooks/usePeople";
 import { randomKey } from "../../utils/utils";
-import { dateFormat } from "../../utils/utils"
 const headerLabels = ["", "ID", "Full Name", "Sector", "Changed At", "Original Revision"];
 
 const PeopleInMoment = () => {
-    const [showDatePicker, setShowDatePicker] = useState(false);
+
     const [date, setDate] = useState("");
-    const [peopleInMoment, setPeopleInMoment] = useState("");
-
-    // const [newData, setNewData] = useState("");
-
-    const getDataHandler = () => {
-        //  setNewData(getData(id, date.toISOString(), setNewData))
-        console.log(date);
-        refetch()
-        console.log(people)
-
-    };
-
-    // useEffect(() => {
-
-    //     setPeopleInMoment(people)
-    // }, [])
-
-
+    const [dateISO, setDateISO] = useState("");
 
     const onError = () => <div className='display-1'>Error</div>
-    // const onSuccess = (people) => console.log(people);
     const {
         isLoading,
-        data: people,
+        data: peopleInMoment,
         error,
         isError,
         refetch,
 
 
-    } = usePeopleHistoryInMoment(onError,);
+    } = usePeopleHistoryInMoment(onError, dateISO);
 
     return (
         <>
@@ -53,9 +34,10 @@ const PeopleInMoment = () => {
                         selected={date}
                         onChange={(date) => {
                             setDate(date)
+                            setDateISO(date.toISOString())
                         }}
                         onCalendarClose={
-                            getDataHandler
+                            refetch
                         }
                         showTimeSelect
                         dateFormat="d.MM.yyyy H:mm"
@@ -63,6 +45,7 @@ const PeopleInMoment = () => {
                         isClearable
                     />
                 </div>
+                <span>Number of data: {peopleInMoment.length} </span>
             </div>
             <div className="table-responsive">
 
