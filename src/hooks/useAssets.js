@@ -1,10 +1,3 @@
-// // GET DATA with fetch
-
-// export const getPeople = async () => {
-//     const res = await fetch("https://es-demo.azurewebsites.net/v1/People");
-//     return res.json();
-// }
-
 import axios from "axios";
 import Moment from 'moment';
 import { useQuery, useMutation } from "react-query";
@@ -12,9 +5,9 @@ import { useQuery, useMutation } from "react-query";
 // *URL
 const url = "https://es-demo.azurewebsites.net/v1"
 const apiPeople = axios.create({ baseURL: url });
-// const sourcePeople = "/People";
 const sourceAssets = "/Assets"
 const history = "/history?from=1.1.1990";
+const inMoment = "/Assets/history?inMoment="
 
 // *PEOPLE
 // *GET People 
@@ -32,6 +25,24 @@ export const useAssetsData = (onError) => {
         onError: onError
     });
 }
+
+// *GET PeopleHistoryInMoment
+export const useAssetsHistoryInMoment = (onError, dateInMoment) => {
+    const getPeople = async () => {
+        const response = await apiPeople.get(`${inMoment}${dateInMoment}`);
+        return response.data;
+    }
+    return useQuery("assetsInMoment", getPeople, {
+        select: people => people.map(el => {
+            return {
+                ...el, changedAt: Moment(el.changedAt).format("lll"),
+            }
+        }),
+        enabled: false,
+        onError: onError
+    });
+}
+
 
 // *GET People by ID
 export const useUserDetails = (userId) => {

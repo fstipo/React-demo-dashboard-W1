@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 
-const PeopleLayout = () => {
+const AssetsLayout = () => {
+    const navigate = useNavigate();
     return (
         <div id="content" className="app-content">
             <div className="d-flex align-items-center mb-3">
@@ -20,12 +21,10 @@ const PeopleLayout = () => {
             < div className="card" >
                 <ul className="nav nav-tabs nav-tabs-v2 px-4" >
                     <li className="nav-item me-3">
-                        <a href="#allTab" className="nav-link active px-2" data-bs-toggle="tab"
-                        >All</a>
+                        <button className="nav-link active px-2" data-bs-toggle="tab" to="all" onClick={() => navigate("/assets")}>All</button>
                     </li>
                     <li className="nav-item me-3">
-                        <a href="#publishedTab" className="nav-link px-2" data-bs-toggle="tab"
-                        >In Moment</a>
+                        <button className="nav-link px-2" to="in-moment" data-bs-toggle="tab" onClick={() => navigate("/assets/in-moment")} >In Moment</button>
                     </li>
                 </ul >
 
@@ -40,7 +39,7 @@ const PeopleLayout = () => {
     )
 }
 
-export default PeopleLayout
+export default AssetsLayout
 
 
 

@@ -12,6 +12,7 @@ import PeopleAll from "./pages/people/PeopleAll"
 import PeopleInMoment from "./pages/people/PeopleInMoment"
 import AssetAll from "./pages/Assets/AssetsAll"
 import PageNotFound from './pages/PageNotFound'
+import AssetsInMoment from './pages/Assets/AssetsInMoment'
 
 const router = createBrowserRouter(
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter(
         <Route
           index
           element={<AssetAll />}
+        />
+        <Route
+          path='in-moment'
+          element={<AssetsInMoment />}
         />
       </Route>
       <Route path='*' element={<PageNotFound />} />

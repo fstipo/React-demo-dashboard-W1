@@ -13,7 +13,6 @@ import { useQuery, useMutation } from "react-query";
 const url = "https://es-demo.azurewebsites.net/v1"
 const apiPeople = axios.create({ baseURL: url });
 const sourcePeople = "/People";
-const sourceAssets = "/Assets"
 const history = "/history?from=1.1.1990";
 const inMoment = "/People/history?inMoment="
 
@@ -31,14 +30,12 @@ export const usePeopleData = (onError) => {
             }
         }),
         onError: onError,
+        removeAfterUnmount: true
 
     });
 }
 
 // *GET PeopleHistoryInMoment
-
-// https://es-demo.azurewebsites.net/v1/People/history?inMoment=2023-02-18T09%3A33%3A10.216Z
-
 export const usePeopleHistoryInMoment = (onError, dateInMoment) => {
     const getPeople = async () => {
         const response = await apiPeople.get(`${inMoment}${dateInMoment}`);
