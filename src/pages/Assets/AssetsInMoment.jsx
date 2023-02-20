@@ -3,7 +3,6 @@ import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import TableHeader from "../../layouts/components/table/TableHeader"
-// import { usePeopleHistoryInMoment } from "../../hooks/usePeople";
 import { useAssetsHistoryInMoment } from "../../hooks/useAssets";
 import { randomKey } from "../../utils/utils";
 const headerLabels = ["", "ID", "Name", "Changed At", "Last Sale", "Net Change", "Country", "Ipo Year", "Volume"];
@@ -12,6 +11,7 @@ const AssetsInMoment = () => {
 
     const [date, setDate] = useState("");
     const [dateISO, setDateISO] = useState("");
+    const [showTable, setShowTable] = useState(false);
 
     const onError = () => <div className='display-1'>Error</div>
     const {
@@ -21,6 +21,11 @@ const AssetsInMoment = () => {
         isError,
         refetch,
     } = useAssetsHistoryInMoment(onError, dateISO);
+
+    const closeHandler = () => {
+        refetch();
+        setShowTable(true);
+    }
 
     return (
         <>
@@ -36,7 +41,7 @@ const AssetsInMoment = () => {
                             setDateISO(date.toISOString())
                         }}
                         onCalendarClose={
-                            refetch
+                            closeHandler
                         }
                         showTimeSelect
                         dateFormat="d.MM.yyyy H:mm"
@@ -44,11 +49,11 @@ const AssetsInMoment = () => {
                         isClearable
                     />
                 </div>
-                <span>Number of data: {peopleInMoment?.length} </span>
+                {showTable && <span>Number of data: {peopleInMoment?.length} </span>}
             </div>
             <div className="table-responsive">
 
-                {peopleInMoment && <table className="table table-hover text-nowrap ">
+                {showTable && peopleInMoment && <table className="table table-hover text-nowrap ">
                     <TableHeader headerLabels={headerLabels} />
                     <tbody>
                         {peopleInMoment?.map(item => <tr key={randomKey()}>

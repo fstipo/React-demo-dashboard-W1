@@ -15,8 +15,8 @@ const PeopleLayout = () => {
                     <h1 className="page-header mb-0">People</h1>
                 </div>
                 <div className="ms-auto">
-                    <a href="#" className="btn btn-primary"
-                    ><i className="fa fa-user-plus fa-fw me-1"></i>Create User</a>
+                    <a href="#" className="btn bg-theme text-white"
+                    ><i className="fa fa-user-plus fa-fw me-1"></i>Add User</a>
                 </div>
             </div>
             < div className="card" >

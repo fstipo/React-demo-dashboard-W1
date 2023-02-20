@@ -14,8 +14,8 @@ const AssetsLayout = () => {
                     <h1 className="page-header mb-0">Assets</h1>
                 </div>
                 <div className="ms-auto">
-                    <a href="#" className="btn btn-primary"
-                    ><i className="fa fa-plus-circle fa-fw me-1"></i>Create Asset</a>
+                    <a href="#" className="btn bg-theme text-white"
+                    ><i className="fa fa-plus-circle fa-fw me-1"></i>Add Asset</a>
                 </div>
             </div>
             < div className="card" >

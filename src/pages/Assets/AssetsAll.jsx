@@ -13,7 +13,6 @@ const AssetAll = () => {
         error,
         isError,
     } = useAssetsData(onError);
-    console.log(assets)
 
     return (
         <div className="table-responsive">
