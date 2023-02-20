@@ -52,14 +52,11 @@ export const usePeopleHistoryInMoment = (onError, dateInMoment) => {
     });
 }
 
-
-
-
 // *GET People by ID
 export const useUserDetails = (userId) => {
     const getUser = async ({ queryKey }) => {
         const id = queryKey[1];
-        const response = await apiPeople.get(`${source}/${id}`);
+        const response = await apiPeople.get(`${sourcePeople}/${id}`);
         return response.data;
     }
     return useQuery(["user-details", userId], getUser)
@@ -68,7 +65,7 @@ export const useUserDetails = (userId) => {
 // *POST people
 export const useAddUser = () => {
     const addUser = async (newUser) => {
-        const response = await apiPeople.post(source, newUser);
+        const response = await apiPeople.post(sourcePeople, newUser);
         return response.data;
     }
 
