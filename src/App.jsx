@@ -26,15 +26,17 @@ const router = createBrowserRouter(
           index
           element={<PeopleAll />}
         />
+
         <Route
           path='in-moment'
           element={<PeopleInMoment />}
         />
-        <Route
-          path='add-user'
-          element={<PeopleAddUser />}
-        />
+
       </Route>
+      <Route
+        path='people/add-user'
+        element={<PeopleAddUser />}
+      />
 
       <Route path='assets' element={<AssetsLayout />} >
         <Route

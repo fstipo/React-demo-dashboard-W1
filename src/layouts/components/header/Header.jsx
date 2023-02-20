@@ -12,7 +12,7 @@ const Header = () => {
             <div className="brand">
                 <Toggler viewToggler="desktop" sidebarToggler="minify" />
                 <a href="#" className="brand-logo">
-                    <img src="assets/img/logo.png" alt="" height="20" />
+                    <img src="/assets/img/logo.png" alt="" height="20" />
                 </a>
             </div>
             {/* END brand  */}
@@ -25,7 +25,7 @@ const Header = () => {
                     <a href="#" data-bs-toggle="dropdown" data-bs-display="static" className="menu-link">
                         <div className="menu-img online">
                             {/* user picture */}
-                            <img src="assets/img/user/user-9.jpg" alt="" className="ms-100 mh-100 rounded-circle"></img>
+                            <img src="/assets/img/user/user-9.jpg" alt="" className="ms-100 mh-100 rounded-circle"></img>
                             <div className="d-flex align-items-center justify-content-center w-100 h-100 bg-gray-800 text-gray-300 rounded-circle overflow-hidden">
                                 <i className="fa fa-user fa-2x mb-n3"></i>
                             </div>
