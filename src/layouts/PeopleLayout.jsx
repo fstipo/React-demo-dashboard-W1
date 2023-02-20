@@ -15,14 +15,14 @@ const PeopleLayout = () => {
                     <h1 className="page-header mb-0">People</h1>
                 </div>
                 <div className="ms-auto">
-                    <a href="#" className="btn bg-theme text-white"
-                    ><i className="fa fa-user-plus fa-fw me-1"></i>Add User</a>
+                    <Link to="add-user" className="btn bg-theme text-white"
+                    ><i className="fa fa-user-plus fa-fw me-1"></i>Add User</Link>
                 </div>
             </div>
             < div className="card" >
                 <ul className="nav nav-tabs nav-tabs-v2 px-4" >
                     <li className="nav-item me-3">
-                        <button className="nav-link active px-2" data-bs-toggle="tab" to="all" onClick={() => navigate("/people")}>All</button>
+                        <button className="nav-link active px-2" data-bs-toggle="tab" to="people" onClick={() => navigate("/people")}>All</button>
                     </li>
                     <li className="nav-item me-3">
                         <button className="nav-link px-2" to="in-moment" data-bs-toggle="tab" onClick={() => navigate("/people/in-moment")} >In Moment</button>
