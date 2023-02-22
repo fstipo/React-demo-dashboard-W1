@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { basicSchema } from '../../schemas'
 import { useAddUser } from '../../hooks/usePeople'
+import { toast } from 'react-toastify'
 import "./people.css"
 
 const PeopleAddUser = () => {
@@ -22,8 +23,8 @@ const PeopleAddUser = () => {
             }
 
             if (values.id !== "" && values.name !== "" && values.sector !== "") {
-                // setShowCreateUserToast(!showCreateUserToast)
                 addUser(newUser);
+                toast.success("User successfully created");
                 actions.resetForm();
             }
 
@@ -115,37 +116,5 @@ const PeopleAddUser = () => {
         </div >
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export default PeopleAddUser
