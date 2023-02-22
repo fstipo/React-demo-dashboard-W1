@@ -8,3 +8,7 @@ select.input-error {
 button:disabled {
   opacity: 0.35;
 }
+
+tr {
+  cursor: pointer;
+}

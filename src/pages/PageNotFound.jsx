@@ -11,7 +11,7 @@ const PageNotFound = () => {
                     <div className="error-page-content">
                         <div className="error-img">
                             <div className="error-img-code">404</div>
-                            <img src="assets/img/page/404.svg" alt="" />
+                            <img src="/assets/img/page/404.svg" alt="" />
                         </div>
 
                         <h1>Oops!</h1>
