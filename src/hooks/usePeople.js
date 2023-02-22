@@ -59,7 +59,7 @@ export const useUserDetails = (userId) => {
         const response = await apiPeople.get(`${sourcePeople}/${id}`);
         return response.data;
     }
-    return useQuery(["user-details", userId], getUser)
+    return useQuery(["people", userId], getUser)
 }
 
 // *POST people
@@ -75,7 +75,7 @@ export const useAddUser = () => {
 // *Delete People by ID
 export const useRemoveUser = (id) => {
     const removeUser = async () => {
-        const response = await apiPeople.delete(`${source}/${id}`);
+        const response = await apiPeople.delete(`${sourcePeople}/${id}`);
         return response.data;
     }
     return useMutation(removeUser)
@@ -84,7 +84,7 @@ export const useRemoveUser = (id) => {
 // *Put people
 export const useUpdateUser = (id) => {
     const updateUser = async (editData) => {
-        const response = await apiPeople.put(`${source}/${id}`, editData);
+        const response = await apiPeople.put(`${sourcePeople}/${id}`, editData);
         return response.data;
     }
     return useMutation(updateUser)
