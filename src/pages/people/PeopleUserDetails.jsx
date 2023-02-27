@@ -93,7 +93,9 @@ const PeopleUserDetails = () => {
 
                                 <label htmlFor="id">ID</label>
                                 <Field id="id" className='form-control' type="text" name="id" placeholder="id"
-                                // {...formik.getFieldProps('id')}
+                                    // {...formik.getFieldProps('id')}
+                                    readOnly
+                                    disabled
                                 />
 
                                 <label htmlFor="name">Name</label>
