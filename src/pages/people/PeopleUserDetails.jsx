@@ -61,9 +61,16 @@ const PeopleUserDetails = () => {
                     <li className="breadcrumb-item"><Link to="/people">People</Link></li>
                     <li className="breadcrumb-item active">User Details</li>
                 </ul>
-                <div className="d-flex align-items-center mb-3">
-                    <h1 className="page-header mb-0">User Details: {id}</h1>
+                <div className='d-flex align-items-center mb-3'>
+                    <a className="btn btn-default" onClick={() => navigate("/people")}>
+                        <i className="fa fa-chevron-left fa-fw ms-n1"></i>
+                        Back
+                    </a>
                 </div>
+                <hr />
+                {/* <div className="d-flex align-items-center mb-3">
+                    <h1 className="page-header mb-0">User Details</h1>
+                </div> */}
             </div >
 
 
@@ -81,6 +88,7 @@ const PeopleUserDetails = () => {
 
 
 
+
                         onSubmit={(values, actions) => {
                             setTimeout(() => {
                                 alert(JSON.stringify(values, null, 2));
@@ -90,7 +98,6 @@ const PeopleUserDetails = () => {
                     >
                         {isSubmitting => (
                             <Form>
-
                                 <label htmlFor="id">ID</label>
                                 <Field id="id" className='form-control' type="text" name="id" placeholder="id"
                                     // {...formik.getFieldProps('id')}
@@ -111,7 +118,7 @@ const PeopleUserDetails = () => {
                                 <div className="mb-5">
                                 </div>
                                 <button
-                                    disabled={isSubmitting}
+                                    // disabled={isSubmitting}
                                     type="button"
                                     className="btn bg-theme text-white btn-lg d-block w-100 fw-500 mb-3"
                                     onClick={deleteUserHandler}
@@ -119,7 +126,7 @@ const PeopleUserDetails = () => {
                                     Delete User
                                 </button>
                                 <button
-                                    disabled={isSubmitting}
+                                    // disabled={isSubmitting}
                                     type="submit"
                                     className="btn bg-theme text-white btn-lg d-block w-100 fw-500 mb-3"
                                 >
@@ -128,17 +135,14 @@ const PeopleUserDetails = () => {
                                 <button
                                     type="button"
                                     className="btn bg-theme text-white btn-lg d-block w-100 fw-500 mb-3"
-                                    onClick={() => toast.info("HISTORY")}
-                                    disabled={isSubmitting}
+                                    onClick={() => {
+                                        toast.info("HISTORY");
+                                        navigate("/people/history");
+                                    }}
+
+                                // disabled={isSubmitting}
                                 >
                                     History
-                                </button>
-                                <button
-                                    onClick={() => navigate("/people")}
-                                    type="button"
-                                    className="btn bg-theme text-white btn-lg d-block w-100 fw-500 mb-3"
-                                >
-                                    Back
                                 </button>
                             </Form>)}
                     </Formik>

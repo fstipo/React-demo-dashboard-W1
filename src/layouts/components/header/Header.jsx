@@ -12,7 +12,7 @@ const Header = () => {
             <div className="brand">
                 <Toggler viewToggler="desktop" sidebarToggler="minify" />
                 <a href="#" className="brand-logo">
-                    <img src="/assets/img/logo.png" alt="" height="20" />
+                    <img src="/src/assets/logo.png" alt="" height="20" />
                 </a>
             </div>
             {/* END brand  */}
