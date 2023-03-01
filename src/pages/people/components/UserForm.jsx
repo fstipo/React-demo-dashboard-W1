@@ -1,10 +1,14 @@
 import React from 'react'
+import { useField } from 'formik'
 
-const UserForm = () => {
+const UserForm = ({ label, className, ...props }) => {
+    const [field, meta, actions] = useField(props);
+    const style = `form-control ${className}`
+
     return (
         <div className="form-group form-control-sm mb-3">
-            <label className="form-label" htmlFor="id">ID</label>
-            <input type="" className="form-control bg-gray-400" id="id" placeholder="ID" readOnly disabled />
+            <label className="form-label" htmlFor="id">{label}</label>
+            <input className={style} {...field}{...props} />
         </div>
     )
 }

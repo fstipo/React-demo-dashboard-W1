@@ -60,9 +60,6 @@ const PeopleUserDetails = () => {
                         enableReinitialize={true}
                         // validationSchema={advancedSchema}
 
-
-
-
                         onSubmit={(values, actions) => {
                             setTimeout(() => {
                                 alert(JSON.stringify(values, null, 2));
