@@ -21,7 +21,7 @@ const PeopleAll = () => {
 
     const rowSelectedHandler = useCallback((event) => {
         const selectedUserId = event.target.parentNode.childNodes[1].textContent;
-        navigate(`/people/user-details/${selectedUserId}`);
+        navigate(`/people/person-details/${selectedUserId}`);
     }, []);
 
     return (

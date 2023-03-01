@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { Form, useFormik, Field } from 'formik'
+import { Form, Field } from 'formik'
 import { basicSchema } from '../../schemas'
 import { toast } from 'react-toastify'
 import { useParams } from 'react-router-dom'
@@ -10,15 +10,16 @@ import { useUserDetails, useRemoveUser, useUpdateUser } from "../../hooks/usePeo
 import { dateFormat } from "../../utils/utils"
 import { Formik } from 'formik'
 
-
 const PeopleUserDetails = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const { data: userDetail
     } = useUserDetails(id);
+
+
+
     const { mutateAsync: removeUser } = useRemoveUser(id);
     const { mutateAsync: updateUser } = useUpdateUser(id);
-
     const deleteUserHandler = () => {
         removeUser();
         toast.error("User is deleted!");
@@ -27,35 +28,11 @@ const PeopleUserDetails = () => {
         }, 1000);
     }
 
-
-
-    // const { values, errors, touched, isSubmitting, handleChange, handleBlur, handleSubmit } = useFormik({
-    //     initialValues: {
-    //         id: userDetail?.id || '',
-    //         name: userDetail?.name || '',
-    //         sector: userDetail?.sector || '',
-    //         changedAt: dateFormat(userDetail?.changedAt) || ""
-    //     },
-    //     validationSchema: basicSchema,
-    //     onSubmit: (userDetail) => {
-    //         if (userDetail.name !== "" && userDetail.sector !== "") {
-    //             const newData = {
-    //                 ...userDetail,
-    //                 "name": userDetail.name ? values.name : userDetail.name,
-    //                 "sector": userDetail.sector ? values.sector : userDetail.sector
-    //             };
-    //             toast.info("User successfully updated!");
-    //             updateUser(newData)
-    //         }
-
-    //     }
-    // })
-
     const style = "form-control form-control-lg fs-15px"
 
     return (
         <div id="content" className="app-content">
-            <div>
+            {/* <div>
                 <ul className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/">Home</Link></li>
                     <li className="breadcrumb-item"><Link to="/people">People</Link></li>
@@ -68,10 +45,7 @@ const PeopleUserDetails = () => {
                     </a>
                 </div>
                 <hr />
-                {/* <div className="d-flex align-items-center mb-3">
-                    <h1 className="page-header mb-0">User Details</h1>
-                </div> */}
-            </div >
+            </div > */}
 
 
             <div className="card container">

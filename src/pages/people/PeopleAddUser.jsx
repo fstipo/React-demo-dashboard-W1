@@ -8,7 +8,7 @@ import "./people.css"
 
 
 const PeopleAddUser = () => {
-    const navigate = useNavigate("/people")
+    const navigate = useNavigate()
     const { mutate: addUser } = useAddUser();
     const { values, errors, touched, isSubmitting, handleChange, handleBlur, handleSubmit } = useFormik({
         initialValues: {

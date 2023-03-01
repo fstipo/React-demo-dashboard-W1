@@ -15,7 +15,7 @@ import PageNotFound from './pages/PageNotFound'
 import AssetsInMoment from './pages/Assets/AssetsInMoment'
 import PeopleAddUser from './pages/people/PeopleAddUser'
 import PeopleUserDetails from './pages/people/PeopleUserDetails'
-import PeopleHistory from "./pages/people/PeopleHistory"
+import PeopleDetails from "./pages/people/PeopleDetails"
 
 
 
@@ -46,8 +46,8 @@ const router = createBrowserRouter(
         element={<PeopleUserDetails />}
       />
       {<Route
-        path='people/history/'
-        element={<PeopleHistory />}
+        path='people/person-details/:id'
+        element={<PeopleDetails />}
       />}
 
       <Route path='assets' element={<AssetsLayout />} >

@@ -1,8 +1,14 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useUserDetails } from '../../hooks/usePeople';
+import UserForm from './components/UserForm';
+import PeopleUserDetailsFunction from './PeopleUserDetailsFunction';
 
-const PeopleHistory = () => {
-    let navigate = useNavigate();
+const PeopleDetails = () => {
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const { data: userDetail
+    } = useUserDetails(id);
     return (
         <div id="content" className="app-content">
             <div>
@@ -11,38 +17,10 @@ const PeopleHistory = () => {
                     <li className="breadcrumb-item"><Link to="/people">People</Link></li>
                     <li className="breadcrumb-item active">Person Details</li>
                 </ul>
-
             </div >
             <div className='container-fluid'>
                 <div className="row">
-                    <div className='col-lg-8 col-xl-7 col-xxl-5' >
-                        <div className='d-flex align-items-center mb-3'>
-                            <a className="btn btn-default" onClick={() => navigate("/people")}>
-                                <i className="fa fa-chevron-left fa-fw ms-n1"></i>
-                                Back
-                            </a>
-                        </div>
-                        <hr />
-                        {/* HISTORY */}
-                        {/* <div className="d-flex align-items-center alert alert-warning">
-                            Showing history record! Updated by Joe Rowling, Aug 24th 2023. 13:01
-                            <div className="spinner-grow text-warning spinner-grow-sm ms-auto" role="alert"></div>
-                        </div> */}
-                        <div className="form-group form-control-sm mb-3">
-                            <label className="form-label" htmlFor="id">ID</label>
-                            <input type="" className="form-control bg-gray-400" id="id" placeholder="ID" readOnly disabled />
-                        </div>
-                        <div className="form-group form-control-sm mb-3">
-                            <label className="form-label" htmlFor="personFullName">Full name</label>
-                            <input type="" className="form-control" id="personFullName" placeholder="Full name" />
-                        </div>
-                        <div className="form-group form-control-sm mb-3">
-                            <label className="form-label" htmlFor="sector">Sector</label>
-                            <input type="" className="form-control" id="sector" placeholder="Sector" />
-
-                        </div>
-                        <hr />
-                    </div>
+                    <PeopleUserDetailsFunction />
                     <div className="col-xl-1 col-xxl-4"></div>
                     <div className="col-lg-8 col-xl-4 col-xxl-3">
                         <div className="navbar navbar-sticky d-block px-4">
@@ -129,7 +107,7 @@ const PeopleHistory = () => {
                                 </div>
                             </div>
                             <div className="">
-                                <div className="d-grid m-2  justify-content-md-center ">
+                                <div className="d-grid m-2  justify-content-md-center">
                                     <button type="button" className="btn btn-secondary btn-sm">Show all</button>
                                 </div>
                             </div>
@@ -143,5 +121,5 @@ const PeopleHistory = () => {
     )
 }
 
-export default PeopleHistory
+export default PeopleDetails
 
