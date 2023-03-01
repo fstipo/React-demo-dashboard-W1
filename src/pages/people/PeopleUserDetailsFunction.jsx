@@ -24,35 +24,29 @@ const PeopleUserDetailsFunction = () => {
     }
     return (
         <Formik
-
             initialValues={{
                 id: userDetail?.id || '',
                 name: userDetail?.name || '',
                 sector: userDetail?.sector || '',
                 changedAt: dateFormat(userDetail?.changedAt) || ""
             }}
-
             enableReinitialize={true}
             validationSchema={basicSchema}
 
-            onSubmit={(userDetail) => {
-                if (userDetail.name !== "" && userDetail.sector !== "") {
+            onSubmit={(values) => {
+                if (userDetail.name !== "" && userDetail.sector !== "" && userDetail.name !== values.name || userDetail.sector !== values.sector) {
                     const newData = {
                         ...userDetail,
-                        "name": userDetail?.name,
-                        "sector": userDetail?.sector
+                        "name": values.name || userDetail?.name,
+                        "sector": values.sector || userDetail?.sector
                     }
-
                     toast.info("User successfully updated!");
                     updateUser(newData)
                 }
             }
             }
-
         >
-
             <div className='col-lg-8 col-xl-7 col-xxl-5' >
-
                 <Form autoComplete='off'>
                     <div className='d-flex align-items-center mb-3'>
                         <a className="btn btn-default" onClick={() => navigate("/people")}>
