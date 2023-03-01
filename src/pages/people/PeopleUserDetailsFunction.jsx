@@ -5,6 +5,7 @@ import { useUserDetails, useUpdateUser, useRemoveUser } from '../../hooks/usePeo
 import { dateFormat } from '../../utils/utils';
 import { toast } from 'react-toastify'
 import UserForm from './components/UserForm';
+import { basicSchema } from "../../schemas/"
 
 const PeopleUserDetailsFunction = () => {
     const navigate = useNavigate();
@@ -23,14 +24,16 @@ const PeopleUserDetailsFunction = () => {
     }
     return (
         <Formik
+
             initialValues={{
                 id: userDetail?.id || '',
                 name: userDetail?.name || '',
                 sector: userDetail?.sector || '',
                 changedAt: dateFormat(userDetail?.changedAt) || ""
             }}
+
             enableReinitialize={true}
-            // validationSchema={advancedSchema}
+            validationSchema={basicSchema}
 
             onSubmit={(userDetail) => {
                 if (userDetail.name !== "" && userDetail.sector !== "") {
@@ -39,14 +42,17 @@ const PeopleUserDetailsFunction = () => {
                         "name": userDetail?.name,
                         "sector": userDetail?.sector
                     }
-                    console.log(userDetail.name)
+
                     toast.info("User successfully updated!");
                     updateUser(newData)
                 }
             }
             }
+
         >
+
             <div className='col-lg-8 col-xl-7 col-xxl-5' >
+
                 <Form autoComplete='off'>
                     <div className='d-flex align-items-center mb-3'>
                         <a className="btn btn-default" onClick={() => navigate("/people")}>
@@ -63,6 +69,7 @@ const PeopleUserDetailsFunction = () => {
                         </div>
                     </div>
                     <hr />
+
                     {/* HISTORY */}
                     {/* <div className="d-flex align-items-center alert alert-warning">
                             Showing history record! Updated by Joe Rowling, Aug 24th 2023. 13:01
@@ -77,7 +84,7 @@ const PeopleUserDetailsFunction = () => {
                     <hr />
                 </Form>
             </div>
-        </Formik>
+        </Formik >
     )
 }
 
