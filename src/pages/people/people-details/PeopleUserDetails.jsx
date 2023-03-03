@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Formik, Form } from 'formik';
-import { useUserDetails, useUpdateUser, useRemoveUser } from '../../hooks/usePeople';
-import { dateFormat } from '../../utils/utils';
+import { useUserDetails, useUpdateUser, useRemoveUser } from '../../../hooks/usePeople';
+import { dateFormat } from '../../../utils/utils';
 import { toast } from 'react-toastify'
-import UserForm from './components/UserForm';
-import { basicSchema } from "../../schemas/"
-import ModalDelete from './components/ModalDelete';
+import UserForm from '../components/UserForm';
+import { basicSchema } from "../../../schemas"
+import ModalDelete from '../components/ModalDelete';
 
-const PeopleUserDetailsFunction = () => {
+const PeopleUserDetails = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const { data: userDetail
@@ -89,4 +89,4 @@ const PeopleUserDetailsFunction = () => {
     )
 }
 
-export default PeopleUserDetailsFunction
+export default PeopleUserDetails
