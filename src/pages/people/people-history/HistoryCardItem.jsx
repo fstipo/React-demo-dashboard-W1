@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useHistoryUserDetails } from "../../../hooks/usePeople"
 
 
-const HistoryCardItem = () => {
+const HistoryCardItem = ({ time }) => {
     const { id } = useParams();
     const { data: historyDetails } = useHistoryUserDetails(id);
 
@@ -12,13 +12,13 @@ const HistoryCardItem = () => {
 
     return (
         <div className="widget-reminder-item">
-            <div className="widget-reminder-time">20:04</div>
-            <div className="widget-reminder-divider bg-danger"></div>
+            <div className="widget-reminder-time">{time}</div>
+            <div className="widget-reminder-divider bg-success"></div>
             <div className="widget-reminder-content">
-                <div className="fs-13px">Deleted by</div>
+                <div className="fs-13px">Created by</div>
                 <div className="d-flex align-items-center mt-1">
                     <div className="flex-fill d-flex align-items-center">
-                        <img src="/assets/img/user/user-3.jpg" alt="" width="16" className="rounded-circle me-2" />Richard Leong
+                        <img src="/assets/img/user/user-3.jpg" alt="" width="16" className="rounded-circle me-2" />Franko Stipanov
                     </div>
                     <a href="#" className="ms-auto">Show ...</a>
                 </div>

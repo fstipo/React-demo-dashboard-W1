@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
-import { todayDate, pastTimeFromToday } from "../../../utils/utils"
+import { activityDate, activityDay, activityTime } from "../../../utils/utils"
 import { useHistoryUserDetails } from "../../../hooks/usePeople"
 import HistoryCardItem from './HistoryCardItem';
 
@@ -9,8 +9,9 @@ const PeopleHistoryCard = () => {
     const { id } = useParams();
     const { data: historyDetails } = useHistoryUserDetails(id);
     const day = historyDetails?.map(item => item.changedAt)
-    const today = todayDate(day?.at(0));
-    const pastTime = pastTimeFromToday(day?.at(0));
+    const today = activityDate(day?.at(0));
+    const pastTime = activityDay(day?.at(0));
+    const time = activityTime(day?.at(0))
 
 
     console.log(`First Item: ${day?.at(0)}`);
@@ -23,11 +24,11 @@ const PeopleHistoryCard = () => {
             <div className="card-header fw-600">{pastTime}, {today}</div>
             <div className="widget-reminder">
 
-                <HistoryCardItem />
+                <HistoryCardItem time={time} />
 
-
+                {/* 
                 <div className="widget-reminder-item">
-                    <div className="widget-reminder-time">14:22</div>
+                    <div className="widget-reminder-time">12:15</div>
                     <div className="widget-reminder-divider bg-primary"></div>
                     <div className="widget-reminder-content">
                         <div className="fs-13px">Updated by</div>
@@ -81,7 +82,7 @@ const PeopleHistoryCard = () => {
                             <a href="#" className="ms-auto">More details</a>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )
