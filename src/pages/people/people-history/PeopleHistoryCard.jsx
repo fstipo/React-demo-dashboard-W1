@@ -14,6 +14,7 @@ const PeopleHistoryCard = () => {
 
 
     console.log(`First Item: ${day?.at(0)}`);
+    console.log(`First Item: ${day?.at(1)}`);
 
 
     return (
