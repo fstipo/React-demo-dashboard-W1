@@ -2,7 +2,7 @@ import React from 'react'
 
 const HistoryCardItem = ({ time, pastTime, date, showDate }) => {
 
-    // console.log(showDate)
+    console.log(showDate)
     return (
         <>
             {showDate && <div className="card-header fw-600">{pastTime},{date}</div>}

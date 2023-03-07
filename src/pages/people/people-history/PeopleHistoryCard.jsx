@@ -14,22 +14,24 @@ const PeopleHistoryCard = () => {
         const time = activityTime(fullDate);
         const pastTime = activityDay(fullDate);
         const date = activityDate(fullDate);
-        let showDate = false;
-        showDate = historyDetails?.filter((item) => date === activityDate(item.changedAt));
+        let showDate = "false"
+
+        const [firstItem, ...restItems] = historyDetails?.filter((item) => date === activityDate(item.changedAt));
+
+        firstItem.showDate = true;
+        restItems.map((item) => item.showDate = false);
+
+        const dataListShow = [firstItem, ...restItems];
+
+        const showDate500 = dataListShow?.map((item) => item.showDate)
 
 
 
-        const sameDates = historyDetails?.filter((item) => date === activityDate(item.changedAt))
-        // sameDates?.map((item) => item.at(0) ? showDate = true : showDate = false));
-        // sameDates?.map((item, index) => console.log(item[0]))
+        // const sameDates = historyDetails?.filter((item) => date === activityDate(item.changedAt))
+        // sameDates?.map((item) => item ? showDate = true : showDate = false);
+        // // sameDates?.map((item, index) => console.log(item[0]))
 
-
-
-
-
-
-
-        return <HistoryCardItem time={time} pastTime={pastTime} date={date} showDate={showDate} />
+        return <HistoryCardItem time={time} pastTime={pastTime} date={date} showDate={showDate500} />
     })
 
 
