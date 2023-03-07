@@ -12,8 +12,8 @@ const PeopleHistoryCard = () => {
     const today = todayDate(day?.at(0));
     const pastTime = pastTimeFromToday(day?.at(0));
 
-    console.log(`First Item: ${day?.at(0)}`);
 
+    console.log(`First Item: ${day?.at(0)}`);
 
 
     return (
