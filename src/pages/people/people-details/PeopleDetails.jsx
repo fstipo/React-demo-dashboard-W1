@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useUserDetails } from '../../../hooks/usePeople';
-import UserForm from '../components/UserForm';
-import PeopleHistory from './PeopleHistory';
+// import UserForm from '../components/UserForm';
+import PeopleHistory from '../people-history/PeopleHistory';
 import PeopleUserDetails from './PeopleUserDetails';
 
 const PeopleDetails = () => {

@@ -96,7 +96,7 @@ export const useUpdateUser = (id) => {
 export const useHistoryUserDetails = (userId) => {
     const getHistory = async ({ queryKey }) => {
         const id = queryKey[1];
-        const response = await apiPeople.get(`${source}/${id}${history}`);
+        const response = await apiPeople.get(`${sourcePeople}/${id}${history}`);
         return response.data;
     }
     return useQuery(["history-details", userId], getHistory,
