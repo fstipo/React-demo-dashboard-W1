@@ -1,8 +1,9 @@
 import React from 'react'
-import { todayDate } from "../../../utils/utils"
+import { todayDate, pastTimeFromToday } from "../../../utils/utils"
 
 const PeopleHistory = () => {
     const today = todayDate();
+    const pastTime = pastTimeFromToday();
     return (
         <div className="col-lg-8 col-xl-4 col-xxl-3">
             <div className="navbar navbar-sticky d-block px-4">
@@ -15,7 +16,7 @@ const PeopleHistory = () => {
                 </div>
                 <div className="card">
                     {/* <div className="card-header fw-600">Today, Nov 4</div> */}
-                    <div className="card-header fw-600">Today, {today}</div>
+                    <div className="card-header fw-600">{pastTime}, {today}</div>
                     <div className="widget-reminder">
                         <div className="widget-reminder-item">
                             <div className="widget-reminder-time">20:04</div>
@@ -30,6 +31,7 @@ const PeopleHistory = () => {
                                 </div>
                             </div>
                         </div>
+
                         <div className="widget-reminder-item">
                             <div className="widget-reminder-time">14:22</div>
                             <div className="widget-reminder-divider bg-primary"></div>
@@ -43,6 +45,8 @@ const PeopleHistory = () => {
                                 </div>
                             </div>
                         </div>
+
+
                         <div className="card-header fw-600">2 days ago, Nov 2</div>
                         <div className="widget-reminder-item">
                             <div className="widget-reminder-time">17:01</div>
