@@ -9,48 +9,38 @@ const PeopleHistoryCard = () => {
     const { id } = useParams();
     const { data: historyDetails } = useHistoryUserDetails(id);
 
+    // add showDate and edit properties to each item
     const newHistoryDetails = historyDetails?.filter((item) => item.id !== item.entityId)?.map((item) => {
         return {
             ...item,
             showDate: false,
-            edit: "created"
+            edit: "updated"
         }
     });
 
-    const activityList = newHistoryDetails?.map(item => {
+    const activityList = newHistoryDetails?.map((item, index, arr) => {
         const fullDate = item.changedAt;
         const time = activityTime(fullDate);
         const pastTime = activityDay(fullDate);
         const date = activityDate(fullDate);
 
-        // add showDate and edit properties to each item
 
         // get the first item of the same date and set showDate to true
         const [firstItem, ...restItems] = newHistoryDetails?.filter((item) => date === activityDate(item.changedAt));
         firstItem.showDate = true;
         restItems.map((item) => item.showDate = false);
 
-        // edit delete
-        const deletedItem = newHistoryDetails?.filter((item) => item.deletedAt !== null);
-        deletedItem.map((item) => item.edit = "deleted");
+        // edit deleted
+        arr.filter((item) => item.deletedAt !== null).map((item) => {
+            item.edit = "deleted"
+        });
 
-        // edit update
-
-        console.table(deletedItem)
-
+        arr.filter((item, index, arr) => item.deletedAt === 0)
+        arr.at(-1).edit = "created";
 
 
-        const removeFive = (arr) => {
-            let index = arr.indexOf(deletedItem);
-            console.log(index)
-            while (index !== -1) {
-                arr.splice(index, 2);
-                index = arr.indexOf(deletedItem);
-            }
-            return arr;
-        }
 
-        console.log(removeFive(newHistoryDetails))
+
 
 
 
@@ -61,7 +51,6 @@ const PeopleHistoryCard = () => {
     return (
         <div className="card">
             {activityList}
-            {/* {newHistoryDetails?.filter((item) => item.deletedAt !== 0)} */}
         </div >
     )
 }

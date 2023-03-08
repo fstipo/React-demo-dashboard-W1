@@ -9,7 +9,7 @@ const HistoryCardItem = ({ time, pastTime, date, showDate, edit }) => {
         labelColor = "bg-success"
         labelText = "Created by"
     } else if (edit === "updated") {
-        labelColor = "bg-success"
+        labelColor = "bg-primary"
         labelText = "Updated by"
     } else if (edit === "deleted") {
         labelColor = "bg-danger"
