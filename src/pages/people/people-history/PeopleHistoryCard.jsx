@@ -9,48 +9,59 @@ const PeopleHistoryCard = () => {
     const { id } = useParams();
     const { data: historyDetails } = useHistoryUserDetails(id);
 
-    const activityList = historyDetails?.map(item => {
+    const newHistoryDetails = historyDetails?.filter((item) => item.id !== item.entityId)?.map((item) => {
+        return {
+            ...item,
+            showDate: false,
+            edit: "created"
+        }
+    });
+
+    const activityList = newHistoryDetails?.map(item => {
         const fullDate = item.changedAt;
         const time = activityTime(fullDate);
         const pastTime = activityDay(fullDate);
         const date = activityDate(fullDate);
-        let showDate = "false"
 
-        const [firstItem, ...restItems] = historyDetails?.filter((item) => date === activityDate(item.changedAt));
+        // add showDate and edit properties to each item
 
+        // get the first item of the same date and set showDate to true
+        const [firstItem, ...restItems] = newHistoryDetails?.filter((item) => date === activityDate(item.changedAt));
         firstItem.showDate = true;
         restItems.map((item) => item.showDate = false);
 
-        const dataListShow = [firstItem, ...restItems];
+        // edit delete
+        const deletedItem = newHistoryDetails?.filter((item) => item.deletedAt !== null);
+        deletedItem.map((item) => item.edit = "deleted");
 
-        const showDate500 = dataListShow?.map((item) => item.showDate)
+        // edit update
+
+        console.table(deletedItem)
 
 
 
-        // const sameDates = historyDetails?.filter((item) => date === activityDate(item.changedAt))
-        // sameDates?.map((item) => item ? showDate = true : showDate = false);
-        // // sameDates?.map((item, index) => console.log(item[0]))
+        const removeFive = (arr) => {
+            let index = arr.indexOf(deletedItem);
+            console.log(index)
+            while (index !== -1) {
+                arr.splice(index, 2);
+                index = arr.indexOf(deletedItem);
+            }
+            return arr;
+        }
 
-        return <HistoryCardItem time={time} pastTime={pastTime} date={date} showDate={showDate500} />
+        console.log(removeFive(newHistoryDetails))
+
+
+
+        return <HistoryCardItem time={time} pastTime={pastTime} date={date} showDate={item.showDate} edit={item.edit} />
     })
 
-
-
-    // console.log(dataList)
-
-    // const data = dataList?.filter((item, index) => {
-    //     if (index === 0) {
-    //         return item
-    //     } else if (activityDate(item.changedAt) !== activityDate(dataList[index - 1].changedAt)) {
-    //         return item
-    //     }
-    // })
-
-    // console.log(data)
 
     return (
         <div className="card">
             {activityList}
+            {/* {newHistoryDetails?.filter((item) => item.deletedAt !== 0)} */}
         </div >
     )
 }
