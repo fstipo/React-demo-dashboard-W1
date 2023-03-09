@@ -18,7 +18,7 @@ const PeopleHistoryCard = () => {
         }
     });
 
-    const activityList = newHistoryDetails?.map((item, index, arr) => {
+    const activityList = newHistoryDetails?.map((item, _, arr) => {
         const fullDate = item.changedAt;
         const time = activityTime(fullDate);
         const pastTime = activityDay(fullDate);
@@ -29,17 +29,14 @@ const PeopleHistoryCard = () => {
         const [firstItem, ...restItems] = newHistoryDetails?.filter((item) => date === activityDate(item.changedAt));
         firstItem.showDate = true;
         restItems.map((item) => item.showDate = false);
-        let delIndex = 0;
-        if (item.deletedAt !== null) {
-            delIndex = index;
-            item.edit = "deleted"
-        }
-        if (delIndex !== 0) {
-            console.log(delIndex - 1)
-            // item.edit = "created"
-            arr.at(delIndex - 1).edit = "created"
-        }
-        arr.at(-1).edit = "created";
+
+        newHistoryDetails.forEach((item, index) => {
+            if (item.deletedAt !== null) {
+                arr[index - 1].edit = "created";
+                item.edit = "deleted";
+            }
+            arr.at(-1).edit = "created";
+        })
 
         return <HistoryCardItem time={time} pastTime={pastTime} date={date} showDate={item.showDate} edit={item.edit} />
     })
