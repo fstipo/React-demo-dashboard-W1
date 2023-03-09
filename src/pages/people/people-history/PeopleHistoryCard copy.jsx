@@ -29,20 +29,24 @@ const PeopleHistoryCard = () => {
         const [firstItem, ...restItems] = newHistoryDetails?.filter((item) => date === activityDate(item.changedAt));
         firstItem.showDate = true;
         restItems.map((item) => item.showDate = false);
-        let delIndex = 0;
-        if (item.deletedAt !== null) {
-            delIndex = index;
+
+        // edit deleted
+        arr.filter((item) => item.deletedAt !== null).map((item) => {
             item.edit = "deleted"
-        }
-        if (delIndex !== 0) {
-            console.log(delIndex - 1)
-            // item.edit = "created"
-            arr.at(delIndex - 1).edit = "created"
-        }
+        });
+
+        arr.filter((item, index, arr) => item.deletedAt === 0)
         arr.at(-1).edit = "created";
+
+
+
+
+
+
 
         return <HistoryCardItem time={time} pastTime={pastTime} date={date} showDate={item.showDate} edit={item.edit} />
     })
+
 
     return (
         <div className="card">
