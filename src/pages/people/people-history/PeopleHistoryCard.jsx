@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { activityDate, activityDay, activityTime } from "../../../utils/utils"
 import { useHistoryUserDetails } from "../../../hooks/usePeople"
@@ -14,11 +14,22 @@ const PeopleHistoryCard = () => {
         return {
             ...item,
             showDate: false,
-            edit: "updated"
+            itemState: "updated"
         }
     });
 
-    const activityList = newHistoryDetails?.map((item, _, arr) => {
+    if (!newHistoryDetails) return null;
+    // newHistoryDetails[newHistoryDetails.length - 1].itemState = "created";
+    newHistoryDetails.at(-1).itemState = "created";
+
+    newHistoryDetails?.forEach((item, index) => {
+        if (item.deletedAt !== null) {
+            newHistoryDetails[index - 1].itemState = "created";
+            item.itemState = "deleted";
+        }
+    })
+
+    const activityList = newHistoryDetails?.map(item => {
         const fullDate = item.changedAt;
         const time = activityTime(fullDate);
         const pastTime = activityDay(fullDate);
@@ -30,15 +41,9 @@ const PeopleHistoryCard = () => {
         firstItem.showDate = true;
         restItems.map((item) => item.showDate = false);
 
-        newHistoryDetails.forEach((item, index) => {
-            if (item.deletedAt !== null) {
-                arr[index - 1].edit = "created";
-                item.edit = "deleted";
-            }
-            arr.at(-1).edit = "created";
-        })
 
-        return <HistoryCardItem time={time} pastTime={pastTime} date={date} showDate={item.showDate} edit={item.edit} />
+
+        return <HistoryCardItem time={time} pastTime={pastTime} date={date} showDate={item.showDate} itemState={item.itemState} />
     })
 
     return (

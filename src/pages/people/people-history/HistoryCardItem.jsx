@@ -1,24 +1,24 @@
 import React from 'react'
 
-const HistoryCardItem = ({ time, pastTime, date, showDate, edit }) => {
+const HistoryCardItem = ({ time, pastTime, date, showDate, itemState }) => {
 
     let labelColor = "bg-primary"
     let labelText = "Updated by"
 
-    if (edit === "created") {
+    if (itemState === "created") {
         labelColor = "bg-success"
         labelText = "Created by"
-    } else if (edit === "updated") {
+    } else if (itemState === "updated") {
         labelColor = "bg-primary"
         labelText = "Updated by"
-    } else if (edit === "deleted") {
+    } else if (itemState === "deleted") {
         labelColor = "bg-danger"
         labelText = "Deleted by"
     }
 
     return (
         <>
-            {showDate && <div className="card-header fw-600">{pastTime},{date}</div>}
+            {showDate && <div className="card-header fw-600">{pastTime}</div>}
             <div className="widget-reminder">
                 <div className="widget-reminder-item">
                     <div className="widget-reminder-time">{time}</div>
