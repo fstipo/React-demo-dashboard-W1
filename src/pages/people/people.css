@@ -12,3 +12,12 @@ button:disabled {
 tr {
   cursor: pointer;
 }
+
+.historyItem {
+  cursor: pointer;
+}
+
+.historyItem:hover {
+  background-color: #dee2e6;
+  color: black;
+}

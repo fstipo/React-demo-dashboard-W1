@@ -76,7 +76,7 @@ const PeopleUserDetails = () => {
                             <div className="spinner-grow text-warning spinner-grow-sm ms-auto" role="alert"></div>
                         </div> */}
 
-                        <UserForm className="bg-gray-500" label="ID" type="number" name="id" placeholder="id" disabled readOnly />
+                        <UserForm className="bg-gray-100 text-black" label="ID" type="number" name="id" placeholder="id" disabled readOnly />
 
                         <UserForm label="Full Name" type="text" name="name" placeholder="Full Name" />
 

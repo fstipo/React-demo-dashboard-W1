@@ -5,7 +5,7 @@ import { useHistoryUserDetails } from "../../../hooks/usePeople"
 import HistoryCardItem from './HistoryCardItem';
 
 
-const PeopleHistoryCard = () => {
+const PeopleHistoryCard = ({ showAll }) => {
     const { id } = useParams();
     const { data: historyDetails } = useHistoryUserDetails(id);
 
@@ -29,7 +29,8 @@ const PeopleHistoryCard = () => {
         }
     })
 
-    const activityList = newHistoryDetails?.map(item => {
+
+    const activityList = newHistoryDetails?.map((item, _, arr) => {
         const fullDate = item.changedAt;
         const time = activityTime(fullDate);
         const pastTime = activityDay(fullDate);
@@ -41,15 +42,15 @@ const PeopleHistoryCard = () => {
         firstItem.showDate = true;
         restItems.map((item) => item.showDate = false);
 
-
-
         return <HistoryCardItem time={time} pastTime={pastTime} date={date} showDate={item.showDate} itemState={item.itemState} />
     })
 
     return (
         <div className="card">
-            {activityList}
+            {showAll ? activityList : activityList.filter((_, index) => index < 5)}
         </div >
+
+
     )
 }
 

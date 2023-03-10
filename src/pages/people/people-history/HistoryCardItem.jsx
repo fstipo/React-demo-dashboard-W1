@@ -19,8 +19,8 @@ const HistoryCardItem = ({ time, pastTime, date, showDate, itemState }) => {
     return (
         <>
             {showDate && <div className="card-header fw-600">{pastTime}</div>}
-            <div className="widget-reminder">
-                <div className="widget-reminder-item">
+            <div className="historyItem widget-reminder">
+                <div className="widget-reminder-item ">
                     <div className="widget-reminder-time">{time}</div>
                     <div className={`widget-reminder-divider ${labelColor}`}></div>
                     <div className="widget-reminder-content">
@@ -29,7 +29,6 @@ const HistoryCardItem = ({ time, pastTime, date, showDate, itemState }) => {
                             <div className="flex-fill d-flex align-items-center">
                                 <img src="/assets/img/user/user-3.jpg" alt="" width="16" className="rounded-circle me-2" />Franko Stipanov
                             </div>
-                            <a href="#" className="ms-auto">Show ...</a>
                         </div>
                     </div>
                 </div >

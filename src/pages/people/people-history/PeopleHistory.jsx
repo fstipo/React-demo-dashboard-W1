@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import PeopleHistoryCard from './PeopleHistoryCard';
 
 const PeopleHistory = () => {
+    const [showAllActivities, setShowAllActivities] = useState(false);
+
+    const showAllHandler = () => setShowAllActivities(!showAllActivities)
 
     return (
         <div className="col-lg-8 col-xl-4 col-xxl-3">
@@ -12,14 +15,14 @@ const PeopleHistory = () => {
                     <h4 className="xpage-header">
                         Activity
                     </h4>
-                    <a href="#" className="ms-auto text-muted p-2">Show all activities</a>
+                    <a className="btn ms-auto text-muted p-2" onClick={showAllHandler}>{showAllActivities ? "Show less" : "Show all activities"}</a>
                 </div>
 
-                <PeopleHistoryCard />
+                <PeopleHistoryCard showAll={showAllActivities} />
 
 
                 <div className="d-grid m-2  justify-content-md-center">
-                    <button type="button" className="btn btn-secondary btn-sm">Show all</button>
+                    <button type="button" className="btn btn-secondary btn-sm" onClick={showAllHandler}>{showAllActivities ? "Show less" : "Show all activities"}</button>
                 </div>
             </div>
         </div>
