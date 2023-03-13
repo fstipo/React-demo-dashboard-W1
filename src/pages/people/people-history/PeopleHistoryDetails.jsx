@@ -29,6 +29,7 @@ const PeopleHistoryDetails = ({ historyRecord }) => {
                         </div>
                         <hr />
 
+
                         {/* HISTORY */}
                         <div className="d-flex align-items-center alert alert-warning">
                             Showing history record! {capitalizeFirstLetter(historyRecord.itemState)} by Franko Stipanov, {historyRecord.changedAt}
