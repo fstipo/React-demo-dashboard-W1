@@ -9,7 +9,7 @@ import {
 import { useHistoryUserDetails } from '../../../hooks/usePeople';
 import HistoryCardItem from './HistoryCardItem';
 
-const PeopleHistoryCard = ({ showAll }) => {
+const PeopleHistoryCard = ({ showAll, onShowForm }) => {
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -44,9 +44,10 @@ const PeopleHistoryCard = ({ showAll }) => {
   const rowSelectedHandler = (e) => {
     const parentID = e.target.closest('.widget-reminder').id;
     const historyDetails = newHistoryDetails.filter(item => item.id === parentID).at(0);
-    console.log({ historyDetails })
+    // console.log({ historyDetails })
+    onShowForm(historyDetails);
 
-    navigate(`/people/history-details/${id}`)
+    // navigate(`/people/history-details/${id}`)
   }
 
   const activityList = newHistoryDetails?.map((item, _, arr) => {

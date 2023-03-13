@@ -1,8 +1,16 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import PeopleHistory from '../people-history/PeopleHistory';
 import PeopleUserDetails from './PeopleUserDetails';
+import PeopleHistoryDetails from "../people-history/PeopleHistoryDetails"
 
 const PeopleDetails = () => {
+    const [historyForm, setHistoryForm] = useState(false);
+    const [historyRecord, setHistoryRecord] = useState("");
+    const showHistoryFormHandler = (data) => {
+        setHistoryRecord(data);
+        setHistoryForm(true);
+    };
     return (
         <div id="content" className="app-content">
             <div>
@@ -15,9 +23,10 @@ const PeopleDetails = () => {
 
             <div className='container-fluid'>
                 <div className="row">
-                    < PeopleUserDetails />
+                    {!historyForm && < PeopleUserDetails />}
+                    {historyForm && < PeopleHistoryDetails historyRecord={historyRecord} />}
                     <div className="col-xl-1 col-xxl-4"></div>
-                    <PeopleHistory />
+                    <PeopleHistory onShow={showHistoryFormHandler} />
                 </div>
             </div>
         </div >

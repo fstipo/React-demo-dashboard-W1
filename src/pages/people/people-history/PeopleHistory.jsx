@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import PeopleHistoryCard from './PeopleHistoryCard';
 
-const PeopleHistory = () => {
+const PeopleHistory = ({ onShow }) => {
 
     const [showAllActivities, setShowAllActivities] = useState("")
     const showAllHandler = () => setShowAllActivities(!showAllActivities)
@@ -18,7 +18,7 @@ const PeopleHistory = () => {
                     <a className="btn ms-auto text-muted p-2" onClick={showAllHandler}>{showAllActivities ? "Show less" : "Show all activities"}</a>
                 </div>
 
-                <PeopleHistoryCard showAll={showAllActivities} />
+                <PeopleHistoryCard showAll={showAllActivities} onShowForm={onShow} />
 
 
                 <div className="d-grid m-2  justify-content-md-center">
