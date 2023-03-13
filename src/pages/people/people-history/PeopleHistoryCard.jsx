@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
   activityDate,
   activityDay,
@@ -11,9 +11,9 @@ import HistoryCardItem from './HistoryCardItem';
 
 const PeopleHistoryCard = ({ showAll }) => {
 
-
-  const { id } = useParams()
-  const { data: historyDetails } = useHistoryUserDetails(id)
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { data: historyDetails } = useHistoryUserDetails(id);
 
 
   // add showDate and edit properties to each item
@@ -43,9 +43,10 @@ const PeopleHistoryCard = ({ showAll }) => {
 
   const rowSelectedHandler = (e) => {
     const parentID = e.target.closest('.widget-reminder').id;
-    console.log(newHistoryDetails.filter(item => item.id === parentID).at(0))
+    const historyDetails = newHistoryDetails.filter(item => item.id === parentID).at(0);
+    console.log({ historyDetails })
 
-
+    navigate(`/people/history-details/${id}`)
   }
 
   const activityList = newHistoryDetails?.map((item, _, arr) => {
@@ -85,7 +86,3 @@ const PeopleHistoryCard = ({ showAll }) => {
 export default PeopleHistoryCard
 
 
-// const rowSelectedHandler = useCallback((event) => {
-//   const selectedUserId = event.target.parentNode.childNodes[1].textContent;
-//   navigate(`/people/person-details/${selectedUserId}`);
-// }, []);

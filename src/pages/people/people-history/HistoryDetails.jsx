@@ -1,21 +1,23 @@
 import { Link } from 'react-router-dom'
-import PeopleHistory from '../people-history/PeopleHistory';
-import PeopleUserDetails from './PeopleUserDetails';
+import PeopleHistory from './PeopleHistory';
+import "../people-history/PeopleHistoryDetails"
+import PeopleHistoryDetails from '../people-history/PeopleHistoryDetails';
 
-const PeopleDetails = () => {
+
+const HistoryDetails = () => {
     return (
         <div id="content" className="app-content">
             <div>
                 <ul className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/">Home</Link></li>
                     <li className="breadcrumb-item"><Link to="/people">People</Link></li>
-                    <li className="breadcrumb-item active">Person Details</li>
+                    <li className="breadcrumb-item active">Person History Details</li>
                 </ul>
             </div >
 
             <div className='container-fluid'>
                 <div className="row">
-                    < PeopleUserDetails />
+                    < PeopleHistoryDetails />
                     <div className="col-xl-1 col-xxl-4"></div>
                     <PeopleHistory />
                 </div>
@@ -24,5 +26,5 @@ const PeopleDetails = () => {
     )
 }
 
-export default PeopleDetails
+export default HistoryDetails
 

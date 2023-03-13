@@ -5,9 +5,6 @@ import PeopleHistoryCard from './PeopleHistoryCard';
 const PeopleHistory = () => {
 
     const [showAllActivities, setShowAllActivities] = useState("")
-
-    const showHistoryF = (data) => onShowHistoryForm(data)
-
     const showAllHandler = () => setShowAllActivities(!showAllActivities)
 
     return (
@@ -21,7 +18,7 @@ const PeopleHistory = () => {
                     <a className="btn ms-auto text-muted p-2" onClick={showAllHandler}>{showAllActivities ? "Show less" : "Show all activities"}</a>
                 </div>
 
-                <PeopleHistoryCard showAll={showAllActivities} onShowHistoryForm={showHistoryF} />
+                <PeopleHistoryCard showAll={showAllActivities} />
 
 
                 <div className="d-grid m-2  justify-content-md-center">

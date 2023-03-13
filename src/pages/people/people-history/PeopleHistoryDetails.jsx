@@ -72,7 +72,7 @@ const PeopleHistoryDetails = () => {
 
                         {/* HISTORY */}
                         <div className="d-flex align-items-center alert alert-warning">
-                            Showing history record! Updated by Joe Rowling, Aug 24th 2023. 13:01
+                            Showing history record! Updated by Franko Stipanov, Aug 24th 2023. 13:01
                             <div className="spinner-grow text-warning spinner-grow-sm ms-auto" role="alert"></div>
                         </div>
 
