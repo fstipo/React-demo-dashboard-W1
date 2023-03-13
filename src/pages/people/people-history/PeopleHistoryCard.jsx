@@ -1,57 +1,91 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import { activityDate, activityDay, activityTime } from "../../../utils/utils"
-import { useHistoryUserDetails } from "../../../hooks/usePeople"
+import {
+  activityDate,
+  activityDay,
+  activityTime,
+  randomKey,
+} from '../../../utils/utils';
+import { useHistoryUserDetails } from '../../../hooks/usePeople';
 import HistoryCardItem from './HistoryCardItem';
 
-
 const PeopleHistoryCard = ({ showAll }) => {
-    const { id } = useParams();
-    const { data: historyDetails } = useHistoryUserDetails(id);
 
-    // add showDate and edit properties to each item
-    const newHistoryDetails = historyDetails?.filter((item) => item.id !== item.entityId)?.map((item) => {
-        return {
-            ...item,
-            showDate: false,
-            itemState: "updated"
-        }
-    });
 
-    if (!newHistoryDetails) return null;
-    // newHistoryDetails[newHistoryDetails.length - 1].itemState = "created";
-    newHistoryDetails.at(-1).itemState = "created";
+  const { id } = useParams()
+  const { data: historyDetails } = useHistoryUserDetails(id)
 
-    newHistoryDetails?.forEach((item, index) => {
-        if (item.deletedAt !== null) {
-            newHistoryDetails[index - 1].itemState = "created";
-            item.itemState = "deleted";
-        }
+
+  // add showDate and edit properties to each item
+  const newHistoryDetails = historyDetails
+    ?.filter((item) => item.id !== item.entityId)
+    ?.map((item) => {
+      return {
+        ...item,
+        showDate: false,
+        itemState: 'updated',
+      }
     })
 
+  // If the fetch data is null or undefined, return null
+  if (!newHistoryDetails) return null
 
-    const activityList = newHistoryDetails?.map((item, _, arr) => {
-        const fullDate = item.changedAt;
-        const time = activityTime(fullDate);
-        const pastTime = activityDay(fullDate);
-        const date = activityDate(fullDate);
+  // newHistoryDetails[newHistoryDetails.length - 1].itemState = "created";
+  newHistoryDetails.at(-1).itemState = 'created'
+
+  newHistoryDetails?.forEach((item, index) => {
+    if (item.deletedAt !== null) {
+      newHistoryDetails[index - 1].itemState = 'created'
+      item.itemState = 'deleted'
+    }
+  })
 
 
-        // get the first item of the same date and set showDate to true
-        const [firstItem, ...restItems] = newHistoryDetails?.filter((item) => date === activityDate(item.changedAt));
-        firstItem.showDate = true;
-        restItems.map((item) => item.showDate = false);
+  const rowSelectedHandler = (e) => {
+    const parentID = e.target.closest('.widget-reminder').id;
+    console.log(newHistoryDetails.filter(item => item.id === parentID).at(0))
 
-        return <HistoryCardItem time={time} pastTime={pastTime} date={date} showDate={item.showDate} itemState={item.itemState} />
-    })
+
+  }
+
+  const activityList = newHistoryDetails?.map((item, _, arr) => {
+    const fullDate = item.changedAt;
+    const time = activityTime(fullDate);
+    const pastTime = activityDay(fullDate);
+    const date = activityDate(fullDate);
+
+    // get the first item of the same date and set showDate to true
+    const [firstItem, ...restItems] = newHistoryDetails?.filter(
+      (item) => date === activityDate(item.changedAt)
+    )
+    firstItem.showDate = true
+    restItems.map((item) => (item.showDate = false))
 
     return (
-        <div className="card">
-            {showAll ? activityList : activityList.filter((_, index) => index < 5)}
-        </div >
-
-
+      <HistoryCardItem
+        id={item.id}
+        key={randomKey()}
+        time={time}
+        pastTime={pastTime}
+        date={date}
+        showDate={item.showDate}
+        itemState={item.itemState}
+        onClick={rowSelectedHandler}
+      />
     )
+  })
+
+  return (
+    <div className="card">
+      {showAll ? activityList : activityList.filter((_, index) => index < 5)}
+    </div>
+  )
 }
 
 export default PeopleHistoryCard
+
+
+// const rowSelectedHandler = useCallback((event) => {
+//   const selectedUserId = event.target.parentNode.childNodes[1].textContent;
+//   navigate(`/people/person-details/${selectedUserId}`);
+// }, []);

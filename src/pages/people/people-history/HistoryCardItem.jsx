@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HistoryCardItem = ({ time, pastTime, date, showDate, itemState }) => {
+const HistoryCardItem = ({ time, pastTime, showDate, itemState, onClick, id }) => {
 
     let labelColor = "bg-primary"
     let labelText = "Updated by"
@@ -19,8 +19,8 @@ const HistoryCardItem = ({ time, pastTime, date, showDate, itemState }) => {
     return (
         <>
             {showDate && <div className="card-header fw-600">{pastTime}</div>}
-            <div className="historyItem widget-reminder">
-                <div className="widget-reminder-item ">
+            <div id={id} className="historyItem widget-reminder" onClick={onClick}>
+                <div className="widget-reminder-item "  >
                     <div className="widget-reminder-time">{time}</div>
                     <div className={`widget-reminder-divider ${labelColor}`}></div>
                     <div className="widget-reminder-content">
@@ -33,6 +33,7 @@ const HistoryCardItem = ({ time, pastTime, date, showDate, itemState }) => {
                     </div>
                 </div >
             </div>
+
         </>
 
 

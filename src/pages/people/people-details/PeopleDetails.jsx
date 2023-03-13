@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useUserDetails } from '../../../hooks/usePeople';
 // import UserForm from '../components/UserForm';
 import PeopleHistory from '../people-history/PeopleHistory';
 import PeopleUserDetails from './PeopleUserDetails';
+import PeopleHistoryDetails from '../people-history/PeopleHistoryDetails'
+
 
 const PeopleDetails = () => {
+
+    const [showHistoryForm, setShowHistoryForm] = useState(false);
+
     const { id } = useParams();
     const navigate = useNavigate();
     const { data: userDetail
     } = useUserDetails(id);
+
+    // const showHistoryForm = (data) => console.log(data);
+
+
     return (
         <div id="content" className="app-content">
             <div>
@@ -22,7 +31,8 @@ const PeopleDetails = () => {
 
             <div className='container-fluid'>
                 <div className="row">
-                    <PeopleUserDetails />
+                    {!showHistoryForm && < PeopleUserDetails />}
+                    {showHistoryForm && <PeopleHistoryDetails />}
                     <div className="col-xl-1 col-xxl-4"></div>
                     <PeopleHistory />
                 </div>
