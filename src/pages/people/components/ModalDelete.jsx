@@ -5,14 +5,14 @@ function ModalDelete(props) {
     return (
         <Modal
             {...props}
-            size="lg"
+            size="md"
             aria-labelledby="contained-modal-title-vcenter"
             centered
 
         >
-            <Modal.Header style={{ backgroundColor: "#fbfbfb", color: "#020202" }} closeButton>
+            <Modal.Header style={{ backgroundColor: "red", color: "#fff" }} closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Are You Sure You Want to Delete This User?
+                    Delete item
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body style={{ backgroundColor: "#f2f2f2", color: "black" }}>
@@ -22,7 +22,7 @@ function ModalDelete(props) {
                 </p>
             </Modal.Body>
             <Modal.Footer style={{ backgroundColor: "#fbfbfb" }}>
-                <button className='btn btn-default' onClick={props.onDelete}>Yes</button>
+                <button className='btn btn-danger' onClick={props.onDelete}>Yes</button>
                 <Button onClick={props.onHide}>Cancel</Button>
             </Modal.Footer>
         </Modal >
