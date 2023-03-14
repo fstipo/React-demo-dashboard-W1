@@ -16,13 +16,15 @@ import AssetsInMoment from './pages/Assets/AssetsInMoment'
 import PeopleAddUser from './pages/people/PeopleAddUser'
 import PeopleDetails from "./pages/people/people-details/PeopleDetails"
 import HistoryDetails from './pages/people/people-history/HistoryDetails'
+import ScrollToTop from './pages/people/components/ScrollToTop'
 
 
 
 const router = createBrowserRouter(
 
   createRoutesFromElements(
-    <Route path='/' element={<RootLayout />}>
+    <Route element={<RootLayout />}>
+
       <Route index element={<Home />} />
 
       <Route path='people' element={<PeopleLayout />}>
@@ -65,6 +67,7 @@ const router = createBrowserRouter(
       <Route path='*' element={<PageNotFound />} />
     </Route>
 
+
   )
 )
 
@@ -72,6 +75,7 @@ const App = () => {
 
   // TODO app - sidebar - minified add  invisible on navigation
   return (
+
     <RouterProvider router={router} />
   )
 }

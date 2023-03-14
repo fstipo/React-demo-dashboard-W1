@@ -20,6 +20,8 @@ export const activityDay = (date) => moment(date).calendar({
 });
 export const activityDate = (date) => moment(date).format('MMM DD');
 
+
+
 // capitalize first letter
 export const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);

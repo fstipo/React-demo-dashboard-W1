@@ -19,7 +19,7 @@ const HistoryCardItem = ({ time, pastTime, showDate, itemState, onClick, id }) =
     return (
         <>
             {showDate && <div className="card-header fw-600">{pastTime}</div>}
-            <div id={id} className="historyItem widget-reminder" onClick={onClick}>
+            <div id={id} href="#" className="historyItem widget-reminder" onClick={onClick} data-click="scroll-top">
                 <div className="widget-reminder-item "  >
                     <div className="widget-reminder-time">{time}</div>
                     <div className={`widget-reminder-divider ${labelColor}`}></div>
@@ -41,3 +41,8 @@ const HistoryCardItem = ({ time, pastTime, showDate, itemState, onClick, id }) =
 }
 
 export default HistoryCardItem
+
+
+    // < a href = "#" data - click="scroll-top" className = "btn-scroll-top " >
+    //     <i className="fa fa-arrow-up"></i>
+    //         </ >

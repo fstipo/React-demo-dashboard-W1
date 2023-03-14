@@ -21,3 +21,7 @@ tr {
   background-color: #dee2e6;
   color: black;
 }
+
+.widget-reminder-divider {
+  width: 4px !important;
+}

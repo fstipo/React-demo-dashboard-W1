@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import ScrollToTop from '../pages/people/components/ScrollToTop'
 
 // pages
 import Header from "./components/header/Header"
@@ -11,6 +11,7 @@ const RootLayout = () => {
     return (
         < div id="app" className="app" >
             <Header />
+            <ScrollToTop />
             <Sidebar />
             <Main />
             <Theme />

@@ -40,14 +40,11 @@ const PeopleHistoryCard = ({ showAll, onShowForm }) => {
     }
   })
 
-
   const rowSelectedHandler = (e) => {
     const parentID = e.target.closest('.widget-reminder').id;
     const historyDetails = newHistoryDetails.filter(item => item.id === parentID).at(0);
-    // console.log({ historyDetails })
+    window.scrollTo(0, 0);
     onShowForm(historyDetails);
-
-    // navigate(`/people/history-details/${id}`)
   }
 
   const activityList = newHistoryDetails?.map((item, _, arr) => {
