@@ -16,7 +16,7 @@ import AssetsInMoment from './pages/Assets/AssetsInMoment'
 import PeopleAddUser from './pages/people/PeopleAddUser'
 import PeopleDetails from "./pages/people/people-details/PeopleDetails"
 import HistoryDetails from './pages/people/people-history/HistoryDetails'
-import ScrollToTop from './pages/people/components/ScrollToTop'
+
 
 
 

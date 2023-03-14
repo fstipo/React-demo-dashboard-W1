@@ -23,6 +23,7 @@ function ModalDelete(props) {
             </Modal.Body>
             <Modal.Footer style={{ backgroundColor: "#fbfbfb" }}>
                 <button className='btn btn-danger' onClick={props.onDelete}>Yes</button>
+                {/* <button className='btn btn-danger' onClick={props.onDelete}>Yes</button> */}
                 <Button onClick={props.onHide}>Cancel</Button>
             </Modal.Footer>
         </Modal >

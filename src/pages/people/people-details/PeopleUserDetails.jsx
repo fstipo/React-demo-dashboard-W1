@@ -52,7 +52,7 @@ const PeopleUserDetails = () => {
                 }
             >
                 <div className='col-lg-8 col-xl-7 col-xxl-5' >
-                    {modalShow && <ModalDelete show={modalShow} onHide={() => setModalShow(false)} onDelete={deleteUserHandler} />}
+                    {modalShow && <ModalDelete show={modalShow} onHide={() => setModalShow(false)} onClick={deleteUserHandler} />}
                     <Form autoComplete='off'>
                         <div className='d-flex align-items-center mb-3'>
                             <a className="btn btn-default" onClick={() => navigate("/people")}>
