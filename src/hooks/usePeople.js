@@ -7,7 +7,7 @@
 
 import axios from "axios";
 import Moment from 'moment';
-import { useQuery, useMutation } from "react-query";
+import { useQuery, useMutation, QueryClient } from "react-query";
 
 // *URL
 const url = "https://es-demo.azurewebsites.net/v1"
@@ -15,6 +15,7 @@ const apiPeople = axios.create({ baseURL: url });
 const sourcePeople = "/People";
 const history = "/history?from=1.1.1990";
 const inMoment = "/People/history?inMoment="
+const queryClient = new QueryClient();
 
 // *PEOPLE
 // *GET People 
@@ -61,7 +62,6 @@ export const useUserDetails = (userId) => {
     }
     return useQuery(["people", userId], getUser)
 }
-
 // *POST people
 export const useAddUser = () => {
     const addUser = async (newUser) => {
@@ -87,7 +87,9 @@ export const useUpdateUser = (id) => {
         const response = await apiPeople.put(`${sourcePeople}/${id}`, editData);
         return response.data;
     }
-    return useMutation(updateUser)
+    return useMutation(updateUser, {
+        onSuccess: () => queryClient.invalidateQueries(["history-details"], id)
+    })
 }
 
 // * HISTORY
@@ -100,13 +102,13 @@ export const useHistoryUserDetails = (userId) => {
         return response.data;
     }
     return useQuery(["history-details", userId], getHistory,
-        {
-            select: people => people.map(el => {
-                return {
-                    ...el, changedAt: Moment(el.changedAt).format("lll"),
-                }
-            }),
-        }
+        // {
+        //     select: people => people.map(el => {
+        //         return {
+        //             ...el, changedAt: Moment(el.changedAt).format("lll"),
+        //         }
+        // }),
+        // }
     )
 }
 

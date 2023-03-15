@@ -20,7 +20,6 @@ const PeopleHistory = ({ onShow }) => {
 
                 <PeopleHistoryCard showAll={showAllActivities} onShowForm={onShow} />
 
-
                 <div className="d-grid m-2  justify-content-md-center">
                     <button type="button" className="btn btn-secondary btn-sm" onClick={showAllHandler}>{showAllActivities ? "Show less" : "Show all activities"}</button>
                 </div>

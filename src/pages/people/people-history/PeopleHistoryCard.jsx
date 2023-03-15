@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import {
   activityDate,
   activityDay,
@@ -11,7 +11,7 @@ import HistoryCardItem from './HistoryCardItem';
 
 const PeopleHistoryCard = ({ showAll, onShowForm }) => {
 
-  const navigate = useNavigate();
+
   const { id } = useParams();
   const { data: historyDetails } = useHistoryUserDetails(id);
 
@@ -53,7 +53,7 @@ const PeopleHistoryCard = ({ showAll, onShowForm }) => {
     const pastTime = activityDay(fullDate);
     const date = activityDate(fullDate);
 
-    // get the first item of the same date and set showDate to true
+    //get the first item of the same date and set showDate to true
     const [firstItem, ...restItems] = newHistoryDetails?.filter(
       (item) => date === activityDate(item.changedAt)
     )
