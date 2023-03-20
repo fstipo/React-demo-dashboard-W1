@@ -7,15 +7,20 @@ import { toast } from 'react-toastify'
 import UserForm from '../components/UserForm';
 import { basicSchema } from "../../../schemas"
 import ModalDelete from '../components/ModalDelete';
+import { QueryClient } from 'react-query';
 
 const PeopleUserDetails = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const { data: userDetail
     } = useUserDetails(id);
+    const queryClient = new QueryClient();
+
+    const onSuccess = () => queryClient.refetchQueries(["history-details", id]);
 
     const [modalShow, setModalShow] = useState(false);
-    const { mutateAsync: updateUser } = useUpdateUser(id);
+    const { mutateAsync: updateUser } = useUpdateUser(id, onSuccess);
+
     const { mutateAsync: removeUser } = useRemoveUser(id);
 
     const deleteUserHandler = () => {
@@ -39,7 +44,9 @@ const PeopleUserDetails = () => {
                 validationSchema={basicSchema}
 
                 onSubmit={(values) => {
-                    if (userDetail.name !== "" && userDetail.sector !== "" && userDetail.name !== values.name || userDetail.sector !== values.sector) {
+                    console.log(values)
+
+                    if (userDetail?.name !== "" && userDetail?.sector !== "" && userDetail?.name !== values.name || userDetail?.sector !== values.sector) {
                         const newData = {
                             ...userDetail,
                             "name": values.name || userDetail?.name,
@@ -52,7 +59,11 @@ const PeopleUserDetails = () => {
                 }
             >
                 <div className='col-lg-8 col-xl-7 col-xxl-5' >
-                    {modalShow && <ModalDelete show={modalShow} onHide={() => setModalShow(false)} onClick={deleteUserHandler} />}
+                    {modalShow && <ModalDelete
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                        onDelete={() => deleteUserHandler()} />}
+
                     <Form autoComplete='off'>
                         <div className='d-flex align-items-center mb-3'>
                             <a className="btn btn-default" onClick={() => navigate("/people")}>
@@ -69,12 +80,6 @@ const PeopleUserDetails = () => {
                             </div>
                         </div>
                         <hr />
-
-                        {/* HISTORY */}
-                        {/* <div className="d-flex align-items-center alert alert-warning">
-                            Showing history record! Updated by Joe Rowling, Aug 24th 2023. 13:01
-                            <div className="spinner-grow text-warning spinner-grow-sm ms-auto" role="alert"></div>
-                        </div> */}
 
                         <UserForm className="bg-gray-100 text-black" label="ID" type="number" name="id" placeholder="id" disabled readOnly />
 

@@ -62,6 +62,9 @@ export const useUserDetails = (userId) => {
     }
     return useQuery(["people", userId], getUser)
 }
+
+
+
 // *POST people
 export const useAddUser = () => {
     const addUser = async (newUser) => {
@@ -71,6 +74,11 @@ export const useAddUser = () => {
 
     return useMutation(addUser)
 }
+
+
+
+
+
 
 // *Delete People by ID
 export const useRemoveUser = (id) => {
@@ -82,13 +90,14 @@ export const useRemoveUser = (id) => {
 }
 
 // *Put people
-export const useUpdateUser = (id) => {
+export const useUpdateUser = (id, onSuccess) => {
     const updateUser = async (editData) => {
         const response = await apiPeople.put(`${sourcePeople}/${id}`, editData);
         return response.data;
     }
     return useMutation(updateUser, {
-        onSuccess: () => queryClient.invalidateQueries(["history-details"], id)
+        onSuccess,
+
     })
 }
 
@@ -101,14 +110,9 @@ export const useHistoryUserDetails = (userId) => {
         const response = await apiPeople.get(`${sourcePeople}/${id}${history}`);
         return response.data;
     }
-    return useQuery(["history-details", userId], getHistory,
-        // {
-        //     select: people => people.map(el => {
-        //         return {
-        //             ...el, changedAt: Moment(el.changedAt).format("lll"),
-        //         }
-        // }),
-        // }
+    return useQuery(["history-details", userId], getHistory, {
+        // refetchInterval: 1000
+    }
     )
 }
 

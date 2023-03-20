@@ -17,7 +17,7 @@ const PeopleAddUser = () => {
             sector: ''
         },
         validationSchema: basicSchema,
-        onSubmit: (values, actions) => {
+        onSubmit: (values) => {
             let newUser = {
                 "id": values.id.toString(),
                 "name": values.name,
@@ -27,7 +27,6 @@ const PeopleAddUser = () => {
             if (values.id !== "" && values.name !== "" && values.sector !== "") {
                 addUser(newUser);
                 toast.success("User successfully created");
-                actions.resetForm();
             }
 
         }
