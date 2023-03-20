@@ -1,8 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function ModalDelete(props) {
-    console.log(props)
+function ModalDelete({ onHide, onDelete, ...props }) {
     return (
         <Modal
             {...props}
@@ -10,10 +9,12 @@ function ModalDelete(props) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <Modal.Header style={{ backgroundColor: "#f2f3f8", color: "#808080" }} closeButton>
+            <Modal.Header style={{ backgroundColor: "#f2f3f8", color: "#808080" }}>
+
                 <Modal.Title id="contained-modal-title-vcenter">
                     Delete item
                 </Modal.Title>
+                <button type="button" className="btn-close btn-close-dark" aria-label="Close" onClick={onHide} />
             </Modal.Header>
             <Modal.Body style={{ backgroundColor: "#f2f2f2", color: "black" }}>
                 {/* <h4>Centered Modal</h4> */}
@@ -23,8 +24,8 @@ function ModalDelete(props) {
                 </p>
             </Modal.Body>
             <Modal.Footer style={{ backgroundColor: "#fbfbfb" }}>
-                <button className='btn btn-danger' onClick={props.onDelete}>Yes</button>
-                <Button onClick={props.onHide}>Cancel</Button>
+                <Button className='btn btn-danger' onClick={onDelete}>Yes</Button>
+                <Button onClick={onHide}>Cancel</Button>
             </Modal.Footer>
         </Modal >
     );

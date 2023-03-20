@@ -44,8 +44,6 @@ const PeopleUserDetails = () => {
                 validationSchema={basicSchema}
 
                 onSubmit={(values) => {
-                    console.log(values)
-
                     if (userDetail?.name !== "" && userDetail?.sector !== "" && userDetail?.name !== values.name || userDetail?.sector !== values.sector) {
                         const newData = {
                             ...userDetail,
@@ -62,7 +60,9 @@ const PeopleUserDetails = () => {
                     {modalShow && <ModalDelete
                         show={modalShow}
                         onHide={() => setModalShow(false)}
-                        onDelete={() => deleteUserHandler()} />}
+                        onDelete={deleteUserHandler}
+                    />}
+
 
                     <Form autoComplete='off'>
                         <div className='d-flex align-items-center mb-3'>
