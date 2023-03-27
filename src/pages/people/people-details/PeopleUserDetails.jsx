@@ -7,20 +7,15 @@ import { toast } from 'react-toastify'
 import UserForm from '../components/UserForm';
 import { basicSchema } from "../../../schemas"
 import ModalDelete from '../components/ModalDelete';
-import { QueryClient } from 'react-query';
 
-const PeopleUserDetails = () => {
+const PeopleUserDetails = ({ onSave }) => {
     const navigate = useNavigate();
     const { id } = useParams();
     const { data: userDetail
     } = useUserDetails(id);
-    const queryClient = new QueryClient();
-
-    const onSuccess = () => queryClient.refetchQueries(["history-details", id]);
 
     const [modalShow, setModalShow] = useState(false);
-    const { mutateAsync: updateUser } = useUpdateUser(id, onSuccess);
-
+    const { mutateAsync: updateUser } = useUpdateUser(id);
     const { mutateAsync: removeUser } = useRemoveUser(id);
 
     const deleteUserHandler = () => {
@@ -33,6 +28,7 @@ const PeopleUserDetails = () => {
 
     return (
         <>
+            {"People user details: Button"}
             <Formik
                 initialValues={{
                     id: userDetail?.id || '',
@@ -51,7 +47,8 @@ const PeopleUserDetails = () => {
                             "sector": values.sector || userDetail?.sector
                         }
                         toast.info("User successfully updated!");
-                        updateUser(newData)
+                        onSave();
+                        updateUser(newData);
                     }
                 }
                 }

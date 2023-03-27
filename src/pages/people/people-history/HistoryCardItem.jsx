@@ -43,6 +43,3 @@ const HistoryCardItem = ({ time, pastTime, showDate, itemState, onClick, id }) =
 export default HistoryCardItem
 
 
-    // < a href = "#" data - click="scroll-top" className = "btn-scroll-top " >
-    //     <i className="fa fa-arrow-up"></i>
-    //         </ >

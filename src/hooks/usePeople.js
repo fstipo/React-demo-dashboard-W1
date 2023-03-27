@@ -1,10 +1,3 @@
-// // GET DATA with fetch
-
-// export const getPeople = async () => {
-//     const res = await fetch("https://es-demo.azurewebsites.net/v1/People");
-//     return res.json();
-// }
-
 import axios from "axios";
 import Moment from 'moment';
 import { useQuery, useMutation, QueryClient } from "react-query";
@@ -63,8 +56,6 @@ export const useUserDetails = (userId) => {
     return useQuery(["people", userId], getUser)
 }
 
-
-
 // *POST people
 export const useAddUser = () => {
     const addUser = async (newUser) => {
@@ -74,11 +65,6 @@ export const useAddUser = () => {
 
     return useMutation(addUser)
 }
-
-
-
-
-
 
 // *Delete People by ID
 export const useRemoveUser = (id) => {
@@ -111,6 +97,19 @@ export const useHistoryUserDetails = (userId) => {
         return response.data;
     }
     return useQuery(["history-details", userId], getHistory, {
+        // refetchInterval: 1000
+    }
+    )
+}
+
+export const getHistoryUserDetails = (userId) => {
+    const getHistory = async ({ queryKey }) => {
+        const id = queryKey[1];
+        const response = await apiPeople.get(`${sourcePeople}/${id}${history}`);
+        return response.data;
+    }
+    return useQuery(["history-details", userId], getHistory, {
+
         // refetchInterval: 1000
     }
     )

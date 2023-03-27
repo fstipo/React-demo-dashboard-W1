@@ -1,5 +1,5 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+
 import {
   activityDate,
   activityDay,
@@ -8,12 +8,19 @@ import {
 } from '../../../utils/utils';
 import { useHistoryUserDetails } from '../../../hooks/usePeople';
 import HistoryCardItem from './HistoryCardItem';
+import { getHistoryUserDetails } from '../../../hooks/usePeople';
 
-const PeopleHistoryCard = ({ showAll, onShowForm }) => {
+const PeopleHistoryCard = ({ showAll, onShowForm, historyDetails }) => {
 
+  // const { data: historyDetails, refetch } = useHistoryUserDetails(id);
+  // console.log(`run:${runHistory}`);
 
-  const { id } = useParams();
-  const { data: historyDetails } = useHistoryUserDetails(id);
+  // useEffect(() => {
+  //   console.log("HISTORY CARD RENDER")
+  //   refetch();
+  // }
+  //   , [runHistory])
+
 
 
   // add showDate and edit properties to each item
@@ -25,6 +32,7 @@ const PeopleHistoryCard = ({ showAll, onShowForm }) => {
         showDate: false,
         itemState: 'updated',
       }
+
     })
 
   // If the fetch data is null or undefined, return null
@@ -57,9 +65,8 @@ const PeopleHistoryCard = ({ showAll, onShowForm }) => {
     const [firstItem, ...restItems] = newHistoryDetails?.filter(
       (item) => date === activityDate(item.changedAt)
     )
-    firstItem.showDate = true
-    restItems.map((item) => (item.showDate = false))
-
+    firstItem.showDate = true;
+    restItems.map((item) => (item.showDate = false));
     return (
       <HistoryCardItem
         id={item.id}
@@ -74,10 +81,12 @@ const PeopleHistoryCard = ({ showAll, onShowForm }) => {
     )
   })
 
+
+
   return (
     <div className="card">
       {showAll ? activityList : activityList.filter((_, index) => index < 5)}
-    </div>
+    </div >
   )
 }
 
