@@ -3,24 +3,9 @@ body::-webkit-scrollbar {
 }
 
 .ag-theme-alpine {
-  /* --ag-background-color: var(--bs-body-bg); 
-  --ag-background-color: #2a374f; */
-  --ag-background-color: var(--app-component-bg)
-  --ag-header-background-color:var(--app-component-table-border-color)
-  /* --ag-foreground-color:; */
-   --ag-foreground-color: #ffffff;
-
-  --ag-odd-row-background-color: var(--app-component-bg)
-  /* --ag-borders: 1px; */
+  --ag-background-color: var(--app-component-bg);
+  --ag-foreground-color: #fffff;
+  --ag-odd-row-background-color: var(--app-component-bg);
   --ag-border-color: var(--app-component-table-border-color);
-      /* --ag-border-color: #babfc7; */
-    /* --ag-secondary-border-color: #dde2eb; */
-    --ag-header-background-color: #f8f8f8;
-
-  /* --ag-secondary-border-color: #dde2eb; */
+  --ag-header-background-color: var(--app-component-bg);
 }
-
-/* --bs-body-bg: #212837;
---bs-body-color: #ebeef4;
---bs-light: #3c4e71;
---bs-light-rgb: 60,78,113; */

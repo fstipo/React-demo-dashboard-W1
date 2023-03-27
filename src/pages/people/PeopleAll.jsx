@@ -1,13 +1,10 @@
-import TableHeader from "../../layouts/components/table/TableHeader"
+import { useCallback, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCallback } from "react";
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { AgGridReact } from "ag-grid-react";
 import { useRef, useMemo } from "react";
 import { ThreeDots } from "react-loader-spinner"
-
-const headerLabels = ["", "ID", "Full Name", "Sector", "Changed At", "Original Revision"];
 
 const columnDefs = [
 
@@ -19,12 +16,14 @@ const columnDefs = [
 ];
 
 import { usePeopleData } from "../../hooks/usePeople";
-import { randomKey } from "../../utils/utils";
-
 
 const PeopleAll = () => {
     const gridRef = useRef(null);
     const navigate = useNavigate();
+    // Pagination
+
+
+
     const onError = () => <div className='display-1'>Error</div>
     const {
         isLoading,
@@ -46,6 +45,7 @@ const PeopleAll = () => {
     const gridOptions = {
         pagination: true,
         paginationAutoPageSize: true,
+        paginationPageSize: 10
     };
     const defaultColDef = useMemo(() => ({
         sortable: true,
@@ -54,7 +54,6 @@ const PeopleAll = () => {
 
     }), [])
 
-    console?.log(people)
     if (isLoading) {
         return <span className='mx-5'><ThreeDots height={30}
             color="#ccc"
@@ -69,7 +68,6 @@ const PeopleAll = () => {
 
         <div className=" ag-theme-alpine" style={{
             width: '100%',
-            height: '500px'
         }} >
             <AgGridReact
                 domLayout={'autoHeight'}
@@ -86,18 +84,6 @@ const PeopleAll = () => {
                 onRowSelected={onRowSelected}
 
             ></AgGridReact>
-            {/* <table className="table table-hover text-nowrap ">
-                <TableHeader headerLabels={headerLabels} />
-                <tbody>
-
-                    {people?.map(item => <tr key={randomKey()} onClick={rowSelectedHandler}>
-                        <td className="align-middle">{ }</td><td className="align-middle">{item.id}</td><td className="align-middle">{item.name}</td><td className="align-middle">{item.sector}</td>
-                        <td className="align-middle">{item.changedAt}</td>
-                        <td className="align-middle">{item.originalRevision
-                        }</td>
-                    </tr>)}
-                </tbody>
-            </table> */}
         </div >
     )
 }

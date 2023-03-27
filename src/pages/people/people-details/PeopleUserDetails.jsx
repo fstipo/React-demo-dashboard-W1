@@ -14,21 +14,26 @@ const PeopleUserDetails = ({ onSave }) => {
     const { data: userDetail
     } = useUserDetails(id);
 
+    const onSuccessUpdate = () => {
+        toast.info("User successfully updated!");
+        onSave()
+    };
+
+    const onSuccessDelete = () => {
+        toast.error("User is deleted!");
+        navigate("/people");
+    }
+
     const [modalShow, setModalShow] = useState(false);
-    const { mutateAsync: updateUser } = useUpdateUser(id);
-    const { mutateAsync: removeUser } = useRemoveUser(id);
+    const { mutateAsync: updateUser } = useUpdateUser(id, onSuccessUpdate);
+    const { mutateAsync: removeUser } = useRemoveUser(id, onSuccessDelete);
 
     const deleteUserHandler = () => {
         removeUser();
-        toast.error("User is deleted!");
-        setTimeout(() => {
-            navigate("/people");
-        }, 1000);
     }
 
     return (
         <>
-            {"People user details: Button"}
             <Formik
                 initialValues={{
                     id: userDetail?.id || '',
@@ -46,9 +51,9 @@ const PeopleUserDetails = ({ onSave }) => {
                             "name": values.name || userDetail?.name,
                             "sector": values.sector || userDetail?.sector
                         }
-                        toast.info("User successfully updated!");
-                        onSave();
+
                         updateUser(newData);
+                        // onSave();
                     }
                 }
                 }

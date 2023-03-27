@@ -11,10 +11,10 @@ const PeopleHistory = ({ onShow, onDataSave }) => {
     const { data: historyDetails, refetch } = useHistoryUserDetails(id);
 
     useEffect(() => {
-        setTimeout(() => {
-            refetch()
-        }, 1000);
-        console.log("People HISTORY RENDER use effect")
+        console.log("first")
+
+        refetch()
+
     }
         , [onDataSave])
 

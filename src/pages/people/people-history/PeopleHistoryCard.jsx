@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import {
   activityDate,
@@ -6,23 +6,10 @@ import {
   activityTime,
   randomKey,
 } from '../../../utils/utils';
-import { useHistoryUserDetails } from '../../../hooks/usePeople';
 import HistoryCardItem from './HistoryCardItem';
-import { getHistoryUserDetails } from '../../../hooks/usePeople';
+
 
 const PeopleHistoryCard = ({ showAll, onShowForm, historyDetails }) => {
-
-  // const { data: historyDetails, refetch } = useHistoryUserDetails(id);
-  // console.log(`run:${runHistory}`);
-
-  // useEffect(() => {
-  //   console.log("HISTORY CARD RENDER")
-  //   refetch();
-  // }
-  //   , [runHistory])
-
-
-
   // add showDate and edit properties to each item
   const newHistoryDetails = historyDetails
     ?.filter((item) => item.id !== item.entityId)

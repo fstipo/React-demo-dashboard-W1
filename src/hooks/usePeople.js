@@ -1,6 +1,6 @@
 import axios from "axios";
 import Moment from 'moment';
-import { useQuery, useMutation, QueryClient } from "react-query";
+import { useQuery, useMutation } from "react-query";
 
 // *URL
 const url = "https://es-demo.azurewebsites.net/v1"
@@ -8,7 +8,7 @@ const apiPeople = axios.create({ baseURL: url });
 const sourcePeople = "/People";
 const history = "/history?from=1.1.1990";
 const inMoment = "/People/history?inMoment="
-const queryClient = new QueryClient();
+
 
 // *PEOPLE
 // *GET People 
@@ -67,16 +67,20 @@ export const useAddUser = () => {
 }
 
 // *Delete People by ID
-export const useRemoveUser = (id) => {
+export const useRemoveUser = (id, onSuccess) => {
     const removeUser = async () => {
         const response = await apiPeople.delete(`${sourcePeople}/${id}`);
         return response.data;
     }
-    return useMutation(removeUser)
+    return useMutation(removeUser, {
+        onSuccess,
+    })
 }
 
 // *Put people
+// 
 export const useUpdateUser = (id, onSuccess) => {
+
     const updateUser = async (editData) => {
         const response = await apiPeople.put(`${sourcePeople}/${id}`, editData);
         return response.data;
@@ -97,23 +101,12 @@ export const useHistoryUserDetails = (userId) => {
         return response.data;
     }
     return useQuery(["history-details", userId], getHistory, {
-        // refetchInterval: 1000
+        //     // refetchInterval: 1000
     }
     )
 }
 
-export const getHistoryUserDetails = (userId) => {
-    const getHistory = async ({ queryKey }) => {
-        const id = queryKey[1];
-        const response = await apiPeople.get(`${sourcePeople}/${id}${history}`);
-        return response.data;
-    }
-    return useQuery(["history-details", userId], getHistory, {
 
-        // refetchInterval: 1000
-    }
-    )
-}
 
 
 
