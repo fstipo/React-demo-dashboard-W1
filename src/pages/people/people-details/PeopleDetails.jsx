@@ -7,14 +7,14 @@ import PeopleHistoryDetails from "../people-history/PeopleHistoryDetails"
 const PeopleDetails = () => {
     const [historyForm, setHistoryForm] = useState(false);
     const [historyRecord, setHistoryRecord] = useState("");
-    const [isSaved, setIsSaved] = useState(false);
+    const [hasChanged, setHasChanged] = useState(false);
 
     const showHistoryFormHandler = (data) => {
         setHistoryRecord(data);
         setHistoryForm(true);
     };
     const saveHandler = () => {
-        setIsSaved(!isSaved)
+        setHasChanged(!hasChanged)
     };
 
     return (
@@ -29,10 +29,10 @@ const PeopleDetails = () => {
 
             <div className='container-fluid'>
                 <div className="row">
-                    {!historyForm && < PeopleUserDetails onSave={saveHandler} />}
+                    {!historyForm && < PeopleUserDetails onChange={saveHandler} />}
                     {historyForm && <PeopleHistoryDetails historyRecord={historyRecord} />}
                     <div className="col-xl-1 col-xxl-4"></div>
-                    <PeopleHistory onDataSave={isSaved} onShow={showHistoryFormHandler} />
+                    <PeopleHistory onDataChanged={hasChanged} onShow={showHistoryFormHandler} />
                 </div>
             </div>
         </div >

@@ -8,7 +8,7 @@ import UserForm from '../components/UserForm';
 import { basicSchema } from "../../../schemas"
 import ModalDelete from '../components/ModalDelete';
 
-const PeopleUserDetails = ({ onSave }) => {
+const PeopleUserDetails = ({ onChange }) => {
     const navigate = useNavigate();
     const { id } = useParams();
     const { data: userDetail
@@ -16,7 +16,7 @@ const PeopleUserDetails = ({ onSave }) => {
 
     const onSuccessUpdate = () => {
         toast.info("User successfully updated!");
-        onSave()
+        onChange()
     };
 
     const onSuccessDelete = () => {
