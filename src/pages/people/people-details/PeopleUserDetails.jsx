@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Formik, Form } from 'formik';
+import { toast } from 'react-toastify'
 import { useUserDetails, useUpdateUser, useRemoveUser } from '../../../hooks/usePeople';
 import { dateFormat } from '../../../utils/utils';
-import { toast } from 'react-toastify'
 import UserForm from '../components/UserForm';
 import { basicSchema } from "../../../schemas"
 import ModalDelete from '../components/ModalDelete';
@@ -11,8 +11,6 @@ import ModalDelete from '../components/ModalDelete';
 const PeopleUserDetails = ({ onChange }) => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const { data: userDetail
-    } = useUserDetails(id);
 
     const onSuccessUpdate = () => {
         toast.info("User successfully updated!");
@@ -25,9 +23,27 @@ const PeopleUserDetails = ({ onChange }) => {
     }
 
     const [modalShow, setModalShow] = useState(false);
+    const { data: userDetail } = useUserDetails(id);
     const { mutateAsync: updateUser } = useUpdateUser(id, onSuccessUpdate);
     const { mutateAsync: removeUser } = useRemoveUser(id, onSuccessDelete);
 
+    const formikInitialValues = {
+        id: userDetail?.id || '',
+        name: userDetail?.name || '',
+        sector: userDetail?.sector || '',
+        changedAt: dateFormat(userDetail?.changedAt) || ""
+    }
+
+    const formikOnSubmit = (values) => {
+        if (userDetail?.name !== "" && userDetail?.sector !== "" && userDetail?.name !== values.name || userDetail?.sector !== values.sector) {
+            const newData = {
+                ...userDetail,
+                "name": values.name || userDetail?.name,
+                "sector": values.sector || userDetail?.sector
+            }
+            updateUser(newData)
+        }
+    }
     const deleteUserHandler = () => {
         removeUser();
     }
@@ -35,28 +51,10 @@ const PeopleUserDetails = ({ onChange }) => {
     return (
         <>
             <Formik
-                initialValues={{
-                    id: userDetail?.id || '',
-                    name: userDetail?.name || '',
-                    sector: userDetail?.sector || '',
-                    changedAt: dateFormat(userDetail?.changedAt) || ""
-                }}
+                initialValues={formikInitialValues}
                 enableReinitialize={true}
                 validationSchema={basicSchema}
-
-                onSubmit={(values) => {
-                    if (userDetail?.name !== "" && userDetail?.sector !== "" && userDetail?.name !== values.name || userDetail?.sector !== values.sector) {
-                        const newData = {
-                            ...userDetail,
-                            "name": values.name || userDetail?.name,
-                            "sector": values.sector || userDetail?.sector
-                        }
-
-                        updateUser(newData);
-                        // onSave();
-                    }
-                }
-                }
+                onSubmit={formikOnSubmit}
             >
                 <div className='col-lg-8 col-xl-7 col-xxl-5' >
                     {modalShow && <ModalDelete
@@ -64,8 +62,6 @@ const PeopleUserDetails = ({ onChange }) => {
                         onHide={() => setModalShow(false)}
                         onDelete={deleteUserHandler}
                     />}
-
-
                     <Form autoComplete='off'>
                         <div className='d-flex align-items-center mb-3'>
                             <a className="btn btn-default" onClick={() => navigate("/people")}>

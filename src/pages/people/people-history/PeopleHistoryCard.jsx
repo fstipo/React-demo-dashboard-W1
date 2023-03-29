@@ -1,13 +1,11 @@
 import React from 'react';
-
+import HistoryCardItem from './HistoryCardItem';
 import {
   activityDate,
   activityDay,
   activityTime,
   randomKey,
 } from '../../../utils/utils';
-import HistoryCardItem from './HistoryCardItem';
-
 
 const PeopleHistoryCard = ({ showAll, onShowForm, historyDetails }) => {
   // add showDate and edit properties to each item
@@ -67,8 +65,6 @@ const PeopleHistoryCard = ({ showAll, onShowForm, historyDetails }) => {
       />
     )
   })
-
-
 
   return (
     <div className="card">

@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import TableHeader from "../../layouts/components/table/TableHeader"
 import { usePeopleHistoryInMoment } from "../../hooks/usePeople";
 import { randomKey, dateFormat } from "../../utils/utils";
+import Loader from "../../layouts/components/Loader";
 const headerLabels = ["", "ID", "Full Name", "Sector", "Changed At", "Deleted At"];
 
 const PeopleInMoment = () => {
@@ -25,6 +26,12 @@ const PeopleInMoment = () => {
     const closeHandler = () => {
         refetch();
         setShowTable(true);
+    }
+    if (isLoading) {
+        return <Loader />
+    }
+    if (isError) {
+        return <div>Error</div>
     }
 
     return (

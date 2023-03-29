@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-
 import PeopleHistoryCard from './PeopleHistoryCard';
 import { useHistoryUserDetails } from '../../../hooks/usePeople';
+import Loader from '../../../layouts/components/Loader';
 
 const PeopleHistory = ({ onShow, onDataChanged }) => {
     const { id } = useParams();
     const [showAllActivities, setShowAllActivities] = useState("")
     const showAllHandler = () => setShowAllActivities(!showAllActivities);
-    const { data: historyDetails, refetch } = useHistoryUserDetails(id);
+    const { data: historyDetails, refetch, isLoading } = useHistoryUserDetails(id);
 
     useEffect(() => {
         refetch()
     }, [onDataChanged]);
+
+    if (isLoading) {
+        return <Loader />
+    }
 
     return (
         <div className="col-lg-8 col-xl-4 col-xxl-3">

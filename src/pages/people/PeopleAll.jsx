@@ -4,7 +4,7 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { AgGridReact } from "ag-grid-react";
 import { useRef, useMemo } from "react";
-import { ThreeDots } from "react-loader-spinner"
+import Loader from "../../layouts/components/Loader";
 
 const columnDefs = [
 
@@ -21,9 +21,6 @@ const PeopleAll = () => {
     const gridRef = useRef(null);
     const navigate = useNavigate();
     // Pagination
-
-
-
     const onError = () => <div className='display-1'>Error</div>
     const {
         isLoading,
@@ -45,7 +42,6 @@ const PeopleAll = () => {
     const gridOptions = {
         pagination: true,
         paginationAutoPageSize: true,
-        paginationPageSize: 10
     };
     const defaultColDef = useMemo(() => ({
         sortable: true,
@@ -55,9 +51,7 @@ const PeopleAll = () => {
     }), [])
 
     if (isLoading) {
-        return <span className='mx-5'><ThreeDots height={30}
-            color="#ccc"
-            ariaLabel="three-dots-loading" /></span>
+        return <Loader />
     }
 
     if (isError) {

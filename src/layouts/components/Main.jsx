@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Main = () => {
 
     return (
-        <>
+        <div className="main">
             <ToastContainer
                 position="top-center"
                 autoClose={3000}
@@ -23,7 +23,7 @@ const Main = () => {
             <a href="#" data-click="scroll-top" className="btn-scroll-top ">
                 <i className="fa fa-arrow-up"></i>
             </a>
-        </>)
+        </div>)
 }
 
 export default Main

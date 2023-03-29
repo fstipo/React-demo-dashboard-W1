@@ -23,7 +23,6 @@ const PeopleAddUser = () => {
                 "name": values.name,
                 "sector": values.sector,
             }
-
             if (values.id !== "" && values.name !== "" && values.sector !== "") {
                 addUser(newUser);
                 toast.success("User successfully created");
@@ -42,9 +41,6 @@ const PeopleAddUser = () => {
                     <li className="breadcrumb-item"><Link to="/people">People</Link></li>
                     <li className="breadcrumb-item active">Add User</li>
                 </ul>
-                {/* <div className="d-flex align-items-center mb-3">
-                    <h1 className="page-header mb-0">Add User</h1>
-                </div> */}
             </div >
             <div className='container-fluid'>
                 <div className="row">
@@ -110,22 +106,14 @@ const PeopleAddUser = () => {
                                 />
                                 {errors.sector && touched.sector && <p className='text-danger'> {errors.sector}</p>}
                             </div>
-
                             <div className="mb-5">
                             </div>
-
                         </form>
                         <hr />
                     </div>
-
                 </div >
             </div>
         </div>
-
-
-
-
-
     )
 }
 

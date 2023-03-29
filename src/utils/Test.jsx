@@ -1,16 +1,9 @@
 import React, { useState } from 'react'
-// library
 import moment from 'moment'
 import ReactDatePicker from 'react-datepicker';
-
 import { usePeopleHistoryInMoment } from '../hooks/usePeople';
 
 const dateFormat = (date) => moment(date).format('DD.MM.YYYY, h:mm:ss A');
-
-// React Picker Sun Feb 19 2023 09:30:00 GMT+0100 (Central European Standard Time)
-// ISO 2023-02-19T10:05:49.002Z
-// Browser 2023-02-19T10%3A05%3A49.002Z
-
 
 const Test = () => {
     const [date, setDate] = useState("");
@@ -35,17 +28,14 @@ const Test = () => {
 
                     <ReactDatePicker
                         className=" p-2 bg-secondary text-dark rounded-2 bg-opacity-10 fw-bold"
-
                         selected={date}
                         onChange={(date) => {
                             setDate(date);
                             setDateISO(date.toISOString())
                         }}
-
                         onCalendarClose={
                             refetch
                         }
-
                         showTimeSelect
                         dateFormat="d.MM.yyyy H:mm"
                         placeholderText=" Select date"

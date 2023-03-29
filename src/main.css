@@ -9,3 +9,11 @@ body::-webkit-scrollbar {
   --ag-border-color: var(--app-component-table-border-color);
   --ag-header-background-color: var(--app-component-bg);
 }
+
+.loader-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}

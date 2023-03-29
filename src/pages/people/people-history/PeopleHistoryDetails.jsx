@@ -7,15 +7,16 @@ import { basicSchema } from "../../../schemas"
 
 const PeopleHistoryDetails = ({ historyRecord }) => {
     const navigate = useNavigate();
+    const formikInitialValues = {
+        id: historyRecord?.entityId || '',
+        name: historyRecord?.name || '',
+        sector: historyRecord?.sector || '',
+        changedAt: dateFormat(historyRecord?.changedAt) || ""
+    }
     return (
         <>
             <Formik
-                initialValues={{
-                    id: historyRecord?.entityId || '',
-                    name: historyRecord?.name || '',
-                    sector: historyRecord?.sector || '',
-                    changedAt: dateFormat(historyRecord?.changedAt) || ""
-                }}
+                initialValues={formikInitialValues}
                 enableReinitialize={true}
                 validationSchema={basicSchema}
             >
