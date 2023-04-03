@@ -11,8 +11,6 @@ const Home = () => {
             <ul className="breadcrumb">
                 <li className="breadcrumb-item active">HOME PAGE</li>
             </ul>
-            <Test />
-            {/* <Loader /> */}
         </div>
     )
 }

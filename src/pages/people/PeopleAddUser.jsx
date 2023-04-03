@@ -6,10 +6,12 @@ import { useAddUser } from '../../hooks/usePeople'
 import { toast } from 'react-toastify'
 import "./people.css"
 
-
 const PeopleAddUser = () => {
     const navigate = useNavigate()
-    const { mutate: addUser } = useAddUser();
+    const onSuccess = () => toast.success("User successfully created");
+    const onError = () => toast.error("⛔ We apologize, we are unable to create the user at this moment. It seems there is a problem with the source or you need to modify the ID as it is already taken.");
+    const { mutate: addUser } = useAddUser(onSuccess, onError);
+
     const { values, errors, touched, isSubmitting, handleChange, handleBlur, handleSubmit } = useFormik({
         initialValues: {
             id: '',
@@ -23,15 +25,16 @@ const PeopleAddUser = () => {
                 "name": values.name,
                 "sector": values.sector,
             }
+
             if (values.id !== "" && values.name !== "" && values.sector !== "") {
                 addUser(newUser);
-                toast.success("User successfully created");
+                // toast.success("User successfully created");
             }
-
         }
     })
 
     const style = "form-control form-control-lg fs-15px"
+
 
     return (
         <div id="content" className="app-content">

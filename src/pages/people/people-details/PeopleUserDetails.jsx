@@ -8,6 +8,7 @@ import UserForm from '../components/UserForm';
 import { basicSchema } from "../../../schemas"
 import ModalDelete from '../components/ModalDelete';
 
+
 const PeopleUserDetails = ({ onChange }) => {
     const navigate = useNavigate();
     const { id } = useParams();
@@ -17,15 +18,19 @@ const PeopleUserDetails = ({ onChange }) => {
         onChange()
     };
 
+    const onErrorUpdate = () => toast.error("We apologize, but we are unable to update the user at this time due to a problem with the source.Please try again later.")
+
     const onSuccessDelete = () => {
         toast.error("User is deleted!");
         navigate("/people");
     }
 
+    const onErrorDelete = () => toast.error("We apologize, but we are unable to delete the user at this time due to a problem with the source. Please try again later.");
+
     const [modalShow, setModalShow] = useState(false);
     const { data: userDetail } = useUserDetails(id);
-    const { mutateAsync: updateUser } = useUpdateUser(id, onSuccessUpdate);
-    const { mutateAsync: removeUser } = useRemoveUser(id, onSuccessDelete);
+    const { mutateAsync: updateUser } = useUpdateUser(id, onSuccessUpdate, onErrorUpdate);
+    const { mutateAsync: removeUser } = useRemoveUser(id, onSuccessDelete, onErrorDelete);
 
     const formikInitialValues = {
         id: userDetail?.id || '',

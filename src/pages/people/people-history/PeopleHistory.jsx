@@ -3,12 +3,13 @@ import { useParams } from 'react-router-dom';
 import PeopleHistoryCard from './PeopleHistoryCard';
 import { useHistoryUserDetails } from '../../../hooks/usePeople';
 import Loader from '../../../layouts/components/Loader';
+import { toast } from 'react-toastify'
 
 const PeopleHistory = ({ onShow, onDataChanged }) => {
     const { id } = useParams();
     const [showAllActivities, setShowAllActivities] = useState("")
     const showAllHandler = () => setShowAllActivities(!showAllActivities);
-    const { data: historyDetails, refetch, isLoading } = useHistoryUserDetails(id);
+    const { data: historyDetails, refetch, isLoading, isError } = useHistoryUserDetails(id);
 
     useEffect(() => {
         refetch()
@@ -16,6 +17,13 @@ const PeopleHistory = ({ onShow, onDataChanged }) => {
 
     if (isLoading) {
         return <Loader />
+    }
+
+    if (isError) {
+        toast.error("We're sorry, but there seems to be an issue with the source. Please try again.", {
+            toastId: 'success1',
+        })
+        return null;
     }
 
     return (
