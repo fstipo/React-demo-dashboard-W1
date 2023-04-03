@@ -16,7 +16,9 @@ const PeopleHistory = ({ onShow, onDataChanged }) => {
     }, [onDataChanged]);
 
     if (isLoading) {
-        return <Loader />
+        return <div>
+            <Loader />
+        </div>
     }
 
     if (isError) {
@@ -29,7 +31,6 @@ const PeopleHistory = ({ onShow, onDataChanged }) => {
     return (
         <div className="col-lg-8 col-xl-4 col-xxl-3">
             <div className="navbar navbar-sticky d-block px-4">
-
                 <div className="d-flex align-items-center">
                     <h4 className="xpage-header">
                         Activity
