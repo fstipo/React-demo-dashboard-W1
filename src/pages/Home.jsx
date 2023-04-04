@@ -1,16 +1,9 @@
-import React from 'react'
-import Loader from '../layouts/components/Loader'
-import Test from '../utils/Test'
-
-
-
+import Breadcrumb from "../components/Breadcrumb";
 const Home = () => {
 
     return (
         <div id="content" className="app-content">
-            <ul className="breadcrumb">
-                <li className="breadcrumb-item active">HOME PAGE</li>
-            </ul>
+            <Breadcrumb />
         </div>
     )
 }

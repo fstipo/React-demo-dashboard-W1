@@ -1,24 +1,11 @@
-
-import React from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
+import Breadcrumb from '../components/Breadcrumb';
 
 const PeopleLayout = () => {
     const navigate = useNavigate();
     return (
         <div id="content" className="app-content">
-            <div className="d-flex align-items-center">
-                <div>
-                    <ul className="breadcrumb">
-                        <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                        <li className="breadcrumb-item active">People</li>
-                    </ul>
-                    {/* <h1 className="page-header mb-0">People</h1> */}
-                </div>
-
-                <div className="ms-auto">
-
-                </div>
-            </div>
+            <Breadcrumb />
 
             <div className='d-flex align-items-center'>
                 <a className="btn btn-default" onClick={() => navigate("/")}>

@@ -1,24 +1,18 @@
-import React from 'react'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"
 
 // layouts
 import RootLayout from './layouts/RootLayout'
 import PeopleLayout from './layouts/PeopleLayout'
-import AssetsLayout from "./layouts/AssetsLayout"
+
 
 // pages
 import Home from "./pages/Home"
 import PeopleAll from "./pages/people/PeopleAll"
 import PeopleInMoment from "./pages/people/PeopleInMoment"
-import AssetAll from "./pages/Assets/AssetsAll"
 import PageNotFound from './pages/PageNotFound'
-import AssetsInMoment from './pages/Assets/AssetsInMoment'
 import PeopleAddUser from './pages/people/PeopleAddUser'
 import PeopleDetails from "./pages/people/people-details/PeopleDetails"
 import HistoryDetails from './pages/people/people-history/HistoryDetails'
-
-
-
 
 const router = createBrowserRouter(
 
@@ -53,17 +47,6 @@ const router = createBrowserRouter(
         element={<HistoryDetails />}
       />}
 
-      <Route path='assets' element={<AssetsLayout />} >
-        <Route
-          index
-          element={<AssetAll />}
-        />
-        <Route
-          path='in-moment/:id'
-          element={<AssetsInMoment />}
-        />
-
-      </Route>
       <Route path='*' element={<PageNotFound />} />
     </Route>
 
@@ -74,10 +57,7 @@ const router = createBrowserRouter(
 const App = () => {
 
   // TODO app - sidebar - minified add  invisible on navigation
-  return (
-
-    <RouterProvider router={router} />
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App

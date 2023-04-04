@@ -1,10 +1,7 @@
-import React from 'react'
-
-// pages
-import Header from "./components/header/Header"
-import Sidebar from "./components/sidebar/Sidebar"
-import Main from './components/Main'
-import Theme from './components/Theme'
+import Main from './components/Main';
+import Theme from './components/Theme';
+import Header from "./components/header/Header";
+import Sidebar from "./components/sidebar/Sidebar";
 
 const RootLayout = () => {
     return (
