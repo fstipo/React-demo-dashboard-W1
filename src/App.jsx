@@ -55,8 +55,6 @@ const router = createBrowserRouter(
 )
 
 const App = () => {
-
-  // TODO app - sidebar - minified add  invisible on navigation
   return <RouterProvider router={router} />
 }
 

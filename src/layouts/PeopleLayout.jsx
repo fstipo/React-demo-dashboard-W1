@@ -3,9 +3,11 @@ import Breadcrumb from '../components/Breadcrumb';
 
 const PeopleLayout = () => {
     const navigate = useNavigate();
+    // const labels = ["Home", "People"];
+    const labels = ["Home", "People"];
     return (
         <div id="content" className="app-content">
-            <Breadcrumb />
+            <Breadcrumb labels={labels} />
 
             <div className='d-flex align-items-center'>
                 <a className="btn btn-default" onClick={() => navigate("/")}>

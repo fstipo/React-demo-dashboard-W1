@@ -20,9 +20,22 @@ export const activityDay = (date) => moment(date).calendar({
 });
 export const activityDate = (date) => moment(date).format('MMM DD');
 
-
-
 // capitalize first letter
 export const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+// format breadCrumbLink
+export const formatBreadCrumbLink = (item, str) => {
+    const hasMoreWords = item.split(' ').length;
+    item = item.toLowerCase() + '/';
+    if (item === 'home/') {
+        return (str = '/');
+    }
+    if (hasMoreWords > 1) {
+        str += item.split(' ').join('-');
+        return str.slice(0, -1);
+    }
+    str += item;
+    return str.slice(0, -1)
+};
