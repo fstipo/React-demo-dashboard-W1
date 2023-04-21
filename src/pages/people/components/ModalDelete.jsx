@@ -18,10 +18,7 @@ function ModalDelete({ onHide, onDelete, ...props }) {
             </Modal.Header>
             <Modal.Body style={{ backgroundColor: "#f2f2f2", color: "black" }}>
                 {/* <h4>Centered Modal</h4> */}
-                <p className='fs-3'>
-                    {/* <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> */}
-
-                    <i className="fas fa-ban" style={{ color: "red" }}></i>
+                <p className='fs-4'>
                     <span className='ms-2'> Are you sure you want to delete this item?</span>
                 </p>
             </Modal.Body>

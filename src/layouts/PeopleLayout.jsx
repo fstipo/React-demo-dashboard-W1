@@ -3,7 +3,6 @@ import Breadcrumb from '../components/Breadcrumb';
 
 const PeopleLayout = () => {
     const navigate = useNavigate();
-    // const labels = ["Home", "People"];
     const labels = ["Home", "People"];
     return (
         <div id="content" className="app-content">
@@ -16,7 +15,7 @@ const PeopleLayout = () => {
                 </a>
                 <div className="ms-auto">
                     <Link to="add-user" className="btn bg-theme text-white"
-                    ><i className="fa fa-user-plus fa-fw me-1"></i>Add User</Link>
+                    ><i className="fa fa-user-plus fa-fw me-1"></i>Add Person</Link>
                 </div>
 
             </div>

@@ -9,7 +9,7 @@ import "./people.css"
 const PeopleAddUser = () => {
     const navigate = useNavigate()
     const onSuccess = () => toast.success("User successfully created");
-    const onError = () => toast.error("⛔ We apologize, we are unable to create the user at this moment. It seems there is a problem with the source or you need to modify the ID as it is already taken.");
+    const onError = () => toast.error("We apologize, we are unable to create the user at this moment. You need to modify the ID as it is already taken.Try Again");
     const { mutate: addUser } = useAddUser(onSuccess, onError);
 
     const { values, errors, touched, isSubmitting, handleChange, handleBlur, handleSubmit } = useFormik({
@@ -42,7 +42,7 @@ const PeopleAddUser = () => {
                 <ul className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/">Home</Link></li>
                     <li className="breadcrumb-item"><Link to="/people">People</Link></li>
-                    <li className="breadcrumb-item active">Add User</li>
+                    <li className="breadcrumb-item active">Add Person</li>
                 </ul>
             </div >
             <div className='container-fluid'>

@@ -18,14 +18,14 @@ const PeopleUserDetails = ({ onChange }) => {
         onChange()
     };
 
-    const onErrorUpdate = () => toast.error("We apologize, but we are unable to update the user at this time due to a problem with the source.Please try again later.")
+    const onErrorUpdate = () => toast.error("We apologize, but we are unable to update the user at this time.Please try again later.")
 
     const onSuccessDelete = () => {
         toast.error("User is deleted!");
         navigate("/people");
     }
 
-    const onErrorDelete = () => toast.error("We apologize, but we are unable to delete the user at this time due to a problem with the source. Please try again later.");
+    const onErrorDelete = () => toast.error("We apologize, but we are unable to delete the user at this time. Please try again later.");
 
     const [modalShow, setModalShow] = useState(false);
     const { data: userDetail } = useUserDetails(id);

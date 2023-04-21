@@ -30,7 +30,7 @@ const Header = () => {
                                 <i className="fa fa-user fa-2x mb-n3"></i>
                             </div>
                         </div>
-                        <div className="menu-text">john@axellon.com</div>
+                        <div className="menu-text">franko. @axellon.com</div>
                     </a>
                     <div className="dropdown-menu dropdown-menu-end me-lg-3">
                         <ProfileDropdownItem profileLabel="Edit Profile" profileIcon="user-circle" />
