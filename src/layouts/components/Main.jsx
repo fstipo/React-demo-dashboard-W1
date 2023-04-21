@@ -17,7 +17,7 @@ const Main = () => {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-                theme="dark"
+            // theme="dark"
             />
             <Outlet />
             <a href="#" data-click="scroll-top" className="btn-scroll-top ">
